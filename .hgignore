@@ -1,4 +1,4 @@
-# Compiled Object files
+syntax: glob
 examples/example1/build_helloworld_vc10
 examples/example2/build_example2_vc10
 examples/example1/build_example1_vc10
