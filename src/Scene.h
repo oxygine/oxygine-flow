@@ -62,6 +62,8 @@ namespace oxygine
                 //back button was pressed (android)
                 EVENT_BACK =            makefourcc('S', 'B', 'a', 'c'),
 
+                //fired from destructor
+                EVENT_DESTROY =         makefourcc('S', 'D', 'e', 's'),
 
                 EVENT_PRESHOWING = EVENT_PRE_SHOWING,
                 EVENT_POSTSHOWING = EVENT_POST_SHOWING,

@@ -40,6 +40,7 @@ namespace oxygine
             Flow();
 
             void init();
+            void free();
 
             void show(spScene scene, const resultCallback& cb);
             void update();

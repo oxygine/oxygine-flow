@@ -61,7 +61,10 @@ namespace oxygine
 
         Scene::~Scene()
         {
-
+            //workaround allows to convert this to sp from destructor
+            _ref_counter = 10000;
+            Event ev(EVENT_DESTROY);
+            EventDispatcher::dispatchEvent(&ev);
         }
 
         void Scene::setTransitionIn(spTransition t)

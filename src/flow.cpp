@@ -36,6 +36,7 @@ namespace oxygine
         void free()
         {
             _touchBlocker = 0;
+            Flow::instance.free();
         }
 
 
@@ -52,13 +53,22 @@ namespace oxygine
             scenes.push_back(first);
         }
 
+        void Flow::free()
+        {
+            _trans = 0;
+            _current = 0;
+            _next = 0;
+            scenes.clear();
+            scenes2show.clear();
+        }
+
         void Flow::show(spScene scene, const resultCallback& cb)
         {
-			auto p = std::find(scenes.begin(), scenes.end(), scene);
-			if (p != scenes.end())			
-				log::error("you can't show scene '%s', it is already in the list", scene->getName().c_str());
+            auto p = std::find(scenes.begin(), scenes.end(), scene);
+            if (p != scenes.end())
+                log::error("you can't show scene '%s', it is already in the list", scene->getName().c_str());
 
-			OX_ASSERT(p == scenes.end());
+            OX_ASSERT(p == scenes.end());
             scene->_resultCB = cb;
             scenes2show.push_back(scene);
 
