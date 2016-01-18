@@ -175,13 +175,21 @@ namespace oxygine
             dispatchEvent(&ev);
         }
 
-        void Scene::finish(Event* ev)
+        void Scene::_finish(Event* ev)
         {
             _done = true;
-            if (ev)
-                static_cast<Event&>(_finishEvent) = *ev;
-            else
-                _finishEvent = SceneEvent();
+        }
+
+        void Scene::finish(Event* ev)
+        {
+            _finish(ev);
+            if (_done)
+            {
+                if (ev)
+                    static_cast<Event&>(_finishEvent) = *ev;
+                else
+                    _finishEvent = SceneEvent();
+            }
 
             //Flow::instance.checkDone();
         }

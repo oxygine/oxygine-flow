@@ -112,6 +112,8 @@ namespace oxygine
             friend class Flow;
             friend class Transition;
 
+            virtual void _finish(Event*);
+
             /**dialog mode*/
             bool _dialog;
 
