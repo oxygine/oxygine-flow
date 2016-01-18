@@ -220,8 +220,13 @@ namespace oxygine
                 }
             }
 
-            if (checkQuit())
+            bool quit = checkQuit();
+            static bool quitLast = false;
+            if (quit && !quitLast)
+            {
                 _wasBackBlocked = true;
+            }
+            quitLast = quit;
 
             if (_transition)
             {
