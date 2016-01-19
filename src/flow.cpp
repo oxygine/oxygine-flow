@@ -90,7 +90,6 @@ namespace oxygine
 
             _transition = true;
 
-            _trans = next->runTransition(this, current, back);
 
             if (next && !_back)
                 next->entering();
@@ -103,6 +102,8 @@ namespace oxygine
 
             if (!back)
                 current->sceneShown(next);
+
+			_trans = next->runTransition(this, current, back);
 
             getStage()->addChild(_touchBlocker);
             _wasTouchBlocked = false;
