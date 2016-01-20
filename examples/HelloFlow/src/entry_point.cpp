@@ -63,7 +63,6 @@ void run()
 
     //create Stage. Stage is a root node
     Stage::instance = new Stage(true);
-    Stage::instance->setScale(0.5f);
     Point size = core::getDisplaySize();
     getStage()->setSize(size);
 
