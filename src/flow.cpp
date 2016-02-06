@@ -2,6 +2,7 @@
 #include "Scene.h"
 #include "Transition.h"
 #include "DebugActor.h"
+#include "core/oxygine.h"
 
 namespace oxygine
 {
@@ -50,6 +51,11 @@ namespace oxygine
         {
             spScene first = new Scene;
             first->_holder->attachTo(getStage());
+            first->addEventListener(Scene::EVENT_SCENE_HIDDEN, [](Event*)
+            {
+                core::requestQuit();
+            }
+                                   );
             scenes.push_back(first);
         }
 
