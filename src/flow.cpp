@@ -36,6 +36,7 @@ namespace oxygine
 
         void free()
         {
+            _touchBlocker->detach();
             _touchBlocker = 0;
             Flow::instance.free();
         }
@@ -50,6 +51,7 @@ namespace oxygine
         void Flow::init()
         {
             spScene first = new Scene;
+            first->setName("initial scene");
             first->_holder->attachTo(getStage());
             first->addEventListener(Scene::EVENT_SCENE_HIDDEN, [](Event*)
             {
@@ -150,6 +152,7 @@ namespace oxygine
                 {
                     current->_resultCB(&current->_finishEvent);
                     current->_resultCB = resultCallback();
+                    current->_finishEvent = SceneEvent();
                 }
             }
 

@@ -96,6 +96,11 @@ namespace oxygine
                 addEventListener(EVENT_BACK, getFinish());
         }
 
+        EventCallback   Scene::getFinish()
+        {
+            return CLOSURE(this, &Scene::finish);
+        }
+
         spTransition Scene::runTransition(Flow* f, spScene current, bool back)
         {
             _transitionDone = false;

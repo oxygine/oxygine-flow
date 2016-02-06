@@ -99,7 +99,7 @@ namespace oxygine
             void addBackHandler(const EventCallback& cb, bool finish = false);
 
             /**returns finish method as callback for simplified usage from client code*/
-            EventCallback   getFinish() { return CLOSURE(this, &Scene::finish); }
+            EventCallback   getFinish();
 
             void setTransitionIn(spTransition t);
             void setTransitionOut(spTransition t);
