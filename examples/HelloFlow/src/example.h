@@ -1,5 +1,4 @@
 #pragma once
-#include "Scene.h"
 #include "Sprite.h"
 #include "res/Resources.h"
 #include "Button.h"

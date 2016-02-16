@@ -112,15 +112,15 @@
   <ItemGroup>
     <ClCompile Include="../src/entry_point.cpp" />
     <ClCompile Include="../src/example.cpp" />
-    <ClCompile Include="..\..\..\src\flow.cpp" />
-    <ClCompile Include="..\..\..\src\Scene.cpp" />
-    <ClCompile Include="..\..\..\src\Transition.cpp" />
+    <ClCompile Include="..\..\..\src\flow\flow.cpp" />
+    <ClCompile Include="..\..\..\src\flow\Scene.cpp" />
+    <ClCompile Include="..\..\..\src\flow\Transition.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="../src/example.h" />
-    <ClInclude Include="..\..\..\src\flow.h" />
-    <ClInclude Include="..\..\..\src\Scene.h" />
-    <ClInclude Include="..\..\..\src\Transition.h" />
+    <ClInclude Include="..\..\..\src\flow\flow.h" />
+    <ClInclude Include="..\..\..\src\flow\Scene.h" />
+    <ClInclude Include="..\..\..\src\flow\Transition.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
