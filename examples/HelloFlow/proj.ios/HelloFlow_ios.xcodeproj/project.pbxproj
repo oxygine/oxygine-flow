@@ -80,12 +80,12 @@
 		0BF9628FC8D38F9748F0CDEB /* example.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = example.cpp; path = ../src/example.cpp; sourceTree = "<group>"; };
 		360377333740D8A2FD15BBE6 /* entry_point.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = entry_point.cpp; path = ../src/entry_point.cpp; sourceTree = "<group>"; };
 		4DA100C319512824B7570663 /* example.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = example.h; path = ../src/example.h; sourceTree = "<group>"; };
-		920CC7DC1C3F38E0005B261E /* flow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = flow.cpp; path = ../../../src/flow.cpp; sourceTree = "<group>"; };
-		920CC7DD1C3F38E0005B261E /* flow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = flow.h; path = ../../../src/flow.h; sourceTree = "<group>"; };
-		920CC7DE1C3F38E0005B261E /* Scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Scene.cpp; path = ../../../src/Scene.cpp; sourceTree = "<group>"; };
-		920CC7DF1C3F38E0005B261E /* Scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Scene.h; path = ../../../src/Scene.h; sourceTree = "<group>"; };
-		920CC7E01C3F38E0005B261E /* Transition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Transition.cpp; path = ../../../src/Transition.cpp; sourceTree = "<group>"; };
-		920CC7E11C3F38E0005B261E /* Transition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Transition.h; path = ../../../src/Transition.h; sourceTree = "<group>"; };
+		920CC7DC1C3F38E0005B261E /* flow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = flow.cpp; path = ../../../src/flow/flow.cpp; sourceTree = "<group>"; };
+		920CC7DD1C3F38E0005B261E /* flow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = flow.h; path = ../../../src/flow/flow.h; sourceTree = "<group>"; };
+		920CC7DE1C3F38E0005B261E /* Scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Scene.cpp; path = ../../../src/flow/Scene.cpp; sourceTree = "<group>"; };
+		920CC7DF1C3F38E0005B261E /* Scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Scene.h; path = ../../../src/flow/Scene.h; sourceTree = "<group>"; };
+		920CC7E01C3F38E0005B261E /* Transition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Transition.cpp; path = ../../../src/flow/Transition.cpp; sourceTree = "<group>"; };
+		920CC7E11C3F38E0005B261E /* Transition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Transition.h; path = ../../../src/flow/Transition.h; sourceTree = "<group>"; };
 		9223FE7E1C2D913D000B1FDA /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = System/Library/Frameworks/GameController.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
