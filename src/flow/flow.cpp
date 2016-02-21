@@ -53,9 +53,10 @@ namespace oxygine
             spScene first = new Scene;
             first->setName("initial scene");
             first->_holder->attachTo(getStage());
-            first->addEventListener(Scene::EVENT_SCENE_HIDDEN, [](Event*)
+            first->addEventListener(Scene::EVENT_SCENE_HIDDEN, [=](Event*)
             {
-                core::requestQuit();
+				if (scenes2show.empty())
+					core::requestQuit();
             }
                                    );
             scenes.push_back(first);
@@ -140,9 +141,7 @@ namespace oxygine
             if (!_back || !current->_dialog)
                 next->postShowing();
 
-            if (_back)
-                next->sceneHidden(current);
-
+            
             getStage()->removeEventListener(TouchEvent::CLICK, CLOSURE(this, &Flow::blockedTouch));
 
             if (current->_done)
@@ -155,6 +154,9 @@ namespace oxygine
                     current->_finishEvent = SceneEvent();
                 }
             }
+
+			if (_back)
+				next->sceneHidden(current);
 
             if (current->_remove)
             {
