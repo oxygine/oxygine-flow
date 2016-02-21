@@ -50,16 +50,6 @@ namespace oxygine
 
         void Flow::init()
         {
-            spScene first = new Scene;
-            first->setName("initial scene");
-            first->_holder->attachTo(getStage());
-            first->addEventListener(Scene::EVENT_SCENE_HIDDEN, [=](Event*)
-            {
-				if (scenes2show.empty())
-					core::requestQuit();
-            }
-                                   );
-            scenes.push_back(first);
         }
 
         void Flow::free()
@@ -73,6 +63,17 @@ namespace oxygine
 
         void Flow::show(spScene scene, const resultCallback& cb)
         {
+            if (scenes.empty())
+            {
+                scenes.push_back(scene);
+                scene->entering();
+                scene->preShowing();
+                scene->_holder->attachTo(getStage());
+                scene->postShowing();
+                scene->_resultCB = cb;
+                return;
+            }
+
             auto p = std::find(scenes.begin(), scenes.end(), scene);
             if (p != scenes.end())
                 log::error("you can't show scene '%s', it is already in the list", scene->getName().c_str());
@@ -141,7 +142,10 @@ namespace oxygine
             if (!_back || !current->_dialog)
                 next->postShowing();
 
-            
+            if (_back)
+                next->sceneHidden(current);
+
+
             getStage()->removeEventListener(TouchEvent::CLICK, CLOSURE(this, &Flow::blockedTouch));
 
             if (current->_done)
@@ -155,8 +159,6 @@ namespace oxygine
                 }
             }
 
-			if (_back)
-				next->sceneHidden(current);
 
             if (current->_remove)
             {
@@ -182,9 +184,11 @@ namespace oxygine
             if (current->_done)
             {
                 scenes.pop_back();
-                spScene prev = scenes.back();
-
-                phaseBegin(current, prev, true);
+                if (!scenes.empty())
+                {
+                    spScene prev = scenes.back();
+                    phaseBegin(current, prev, true);
+                }
             }
         }
 
@@ -218,7 +222,7 @@ namespace oxygine
             if (DebugActor::instance)
             {
                 std::string str;
-                for (size_t i = 1; i < scenes.size(); ++i)
+                for (size_t i = 0; i < scenes.size(); ++i)
                 {
                     str += scenes[i]->getName();
                     str += "->";
@@ -264,6 +268,9 @@ namespace oxygine
                 current->dispatchEvent(&ev);
                 checkDone();
             }
+
+            if (scenes.empty())
+                core::requestQuit();
         }
 
         void update()
