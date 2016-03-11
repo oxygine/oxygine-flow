@@ -219,6 +219,9 @@ namespace oxygine
 
         void Flow::update()
         {
+			if (scenes.empty() && scenes2show.empty())
+				return;
+
             if (DebugActor::instance)
             {
                 std::string str;
@@ -259,14 +262,22 @@ namespace oxygine
             if (_transition)
                 return;
 
-            if (_wasBackBlocked && !scenes.empty())
+            if (!scenes.empty())
             {
-                _wasBackBlocked = false;
                 spScene current = scenes.back();
 
-                Event ev(Scene::EVENT_BACK);
-                current->dispatchEvent(&ev);
-                checkDone();
+                if (_wasBackBlocked)
+                {
+                    _wasBackBlocked = false;
+
+                    Event ev(Scene::EVENT_BACK);
+                    current->dispatchEvent(&ev);
+                    checkDone();
+                }
+                else
+                {
+                    current->update();
+                }
             }
 
             if (scenes.empty())
