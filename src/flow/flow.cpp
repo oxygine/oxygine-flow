@@ -219,8 +219,8 @@ namespace oxygine
 
         void Flow::update()
         {
-			if (scenes.empty() && scenes2show.empty())
-				return;
+            if (scenes.empty() && scenes2show.empty())
+                return;
 
             if (DebugActor::instance)
             {
