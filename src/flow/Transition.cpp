@@ -3,6 +3,7 @@
 #include "MaskedSprite.h"
 #include "core/oxygine.h"
 #include "flow.h"
+#include "STDMaterial.h"
 
 #if OXYGINE_RENDERER>2
 #   include "TweenAlphaFade.h"
@@ -121,7 +122,11 @@ namespace oxygine
             spScene target = back ? current : next;
 
             int duration = 500;
-#if OXYGINE_RENDERER>2
+#if OXYGINE_RENDERER>3
+			//target->getHolder()->setAlpha(back ? 255 : 0);
+			spTween tween = target->getHolder()->addTween(
+				TweenAlphaFade(!back, PostProcessOptions().fullscreen()), duration, 1, false, 0);
+#elif OXYGINE_RENDERER>2
             //target->getHolder()->setAlpha(back ? 255 : 0);
             spTween tween = target->getHolder()->addTween(
                                 TweenAlphaFade(!back, TweenAlphaFade::opt_fullscreen), duration, 1, false, 0);
