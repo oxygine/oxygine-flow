@@ -113,6 +113,7 @@ namespace oxygine
             friend class Transition;
 
             virtual void _finish(Event*);
+            virtual void update() {}
 
             /**dialog mode*/
             bool _dialog;
