@@ -9,7 +9,7 @@ LOCAL_SRC_FILES := ../../../../../..//SDL/src/main/android/SDL_android_main.c
 LOCAL_SRC_FILES += ../../../src/entry_point.cpp ../../../src/example.cpp 
 
 
-LOCAL_STATIC_LIBRARIES := oxygine-framework_static oxygine-flow_static
+LOCAL_STATIC_LIBRARIES := oxygine-flow_static oxygine-framework_static 
 LOCAL_SHARED_LIBRARIES := SDL2
 
 include $(BUILD_SHARED_LIBRARY)

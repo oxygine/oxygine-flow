@@ -29,5 +29,5 @@ set(linkFlags "${linkFlags} -s NO_EXIT_RUNTIME=1 -s FULL_ES2=1 -s WARN_ON_UNDEFI
 
 set_target_properties(HelloFlow PROPERTIES LINK_FLAGS "${linkFlags}")
 
-target_link_libraries(HelloFlow ${OXYGINE_CORE_LIBS} oxygine-flow)
+target_link_libraries(HelloFlow oxygine-flow ${OXYGINE_CORE_LIBS})
 em_link_pre_js(HelloFlow ${CMAKE_CURRENT_SOURCE_DIR}/data.js)

@@ -19,4 +19,4 @@ if (WIN32) #disable console mode for VC++
 	set_target_properties(HelloFlow PROPERTIES WIN32_EXECUTABLE TRUE)
 endif(WIN32)
 
-target_link_libraries(HelloFlow ${OXYGINE_CORE_LIBS} oxygine-flow)
+target_link_libraries(HelloFlow oxygine-flow ${OXYGINE_CORE_LIBS} )
