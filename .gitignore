@@ -9,7 +9,7 @@ examples/embuild/
 examples/example2/build/
 examples/example1/proj.cmake/build
 examples/example2/proj.cmake/build/
-*/proj.emscripten/build/
+examples/HelloFlow/proj.emscripten/build/
 data.js
 examples/HelloFlow/proj.emscripten/build_release/
 examples/HelloFlow/proj.android/bin/
