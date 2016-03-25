@@ -228,10 +228,11 @@ namespace oxygine
                 for (size_t i = 0; i < scenes.size(); ++i)
                 {
                     str += scenes[i]->getName();
-                    str += "->";
+                    str += "-> ";
                 }
                 if (!str.empty())
                 {
+                    str.pop_back();
                     str.pop_back();
                     str.pop_back();
                     str += "\n";
