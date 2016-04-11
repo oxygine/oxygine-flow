@@ -76,9 +76,12 @@ namespace oxygine
 
             auto p = std::find(scenes.begin(), scenes.end(), scene);
             if (p != scenes.end())
+            {
                 log::error("you can't show scene '%s', it is already in the list", scene->getName().c_str());
+                OX_ASSERT(p == scenes.end());
+                return;
+            }
 
-            OX_ASSERT(p == scenes.end());
             scene->_resultCB = cb;
             scenes2show.push_back(scene);
 
