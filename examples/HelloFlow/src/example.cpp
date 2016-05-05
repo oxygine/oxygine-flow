@@ -1,6 +1,6 @@
 #include "oxygine-framework.h"
-#include "flow/flow.h"
-#include "flow/Transition.h"
+#include "oxygine-flow.h"
+
 using namespace oxygine;
 
 class MyDialog : public flow::Scene
