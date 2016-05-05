@@ -238,7 +238,6 @@ namespace oxygine
                     str.pop_back();
                     str.pop_back();
                     str.pop_back();
-                    str += "\n";
                     DebugActor::addDebugString(str.c_str());
                 }
             }
