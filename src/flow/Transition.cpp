@@ -48,14 +48,14 @@ namespace oxygine
             if (current->_dialog)
             {
                 if (!back)
-                    getStage()->insertChildAfter(next->_holder, current->_holder);
+                    current->_holder->insertSiblingAfter(next->_holder);
             }
             else
             {
                 if (back)
-                    getStage()->insertChildBefore(next->_holder, current->_holder);
+                    current->_holder->insertSiblingBefore(next->_holder);
                 else
-                    getStage()->insertChildAfter(next->_holder, current->_holder);
+                    current->_holder->insertSiblingAfter(next->_holder);
             }
         }
 
@@ -101,7 +101,7 @@ namespace oxygine
             {
                 _fade->setAlpha(0);
                 _fade->addTween(Actor::TweenAlpha(255), _duration);
-                holder->getParent()->insertChildBefore(_fade, holder);
+                holder->insertSiblingBefore(_fade);
             }
 
 
@@ -156,8 +156,8 @@ namespace oxygine
 
         void TransitionShutters::_run(spScene current, spScene next, bool back)
         {
-            getStage()->insertChildAfter(left, current->getHolder());
-            getStage()->insertChildAfter(right, current->getHolder());
+            current->getHolder()->insertSiblingAfter(left);
+            current->getHolder()->insertSiblingAfter(right);
 
             int dur = 500;
             left->setX(-left->getWidth());
@@ -167,7 +167,7 @@ namespace oxygine
             spTween t = right->addTween(Actor::TweenX(getStage()->getWidth() / 2), dur);
             t->setDoneCallback([ = ](Event*)
             {
-                getStage()->insertChildAfter(next->getHolder(), current->getHolder());
+                current->getHolder()->insertSiblingAfter(next->getHolder());
                 current->getHolder()->detach();
 
                 left->addTween(Actor::TweenX(-left->getWidth()), dur);

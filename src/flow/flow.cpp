@@ -140,7 +140,7 @@ namespace oxygine
                 current->postHiding();
             }
 
-            getStage()->insertChildBefore(_touchBlocker, next->getHolder());
+            next->getHolder()->insertSiblingBefore(_touchBlocker);
 
             if (!_back || !current->_dialog)
                 next->postShowing();
