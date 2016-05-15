@@ -21,7 +21,7 @@
 		04998EF817F8B6F3003441C3 /* libjpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04998EF617F8B6F3003441C3 /* libjpeg.a */; };
 		049B52B11871EBFA00EF3C66 /* liboxygine_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 049B52AD1871EBBA00EF3C66 /* liboxygine_ios.a */; };
 		04E9AD3F1876FE84006A7317 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04E9AD3E1876FE84006A7317 /* Images.xcassets */; };
-		2DC477AC10D6C07B3FE008F6 /* entry_point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 360377333740D8A2FD15BBE6 /* entry_point.cpp */; };
+		2DC477AC10D6C07B3FE008F6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 360377333740D8A2FD15BBE6 /* main.cpp */; };
 		920CC7E21C3F38E0005B261E /* flow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 920CC7DC1C3F38E0005B261E /* flow.cpp */; };
 		920CC7E31C3F38E0005B261E /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 920CC7DE1C3F38E0005B261E /* Scene.cpp */; };
 		920CC7E41C3F38E0005B261E /* Transition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 920CC7E01C3F38E0005B261E /* Transition.cpp */; };
@@ -78,7 +78,7 @@
 		04998EF617F8B6F3003441C3 /* libjpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjpeg.a; path = "../../../../oxygine-framework//oxygine/third_party/ios/libraries/libjpeg.a"; sourceTree = "<group>"; };
 		04E9AD3E1876FE84006A7317 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = HelloFlow/Images.xcassets; sourceTree = "<group>"; };
 		0BF9628FC8D38F9748F0CDEB /* example.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = example.cpp; path = ../src/example.cpp; sourceTree = "<group>"; };
-		360377333740D8A2FD15BBE6 /* entry_point.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = entry_point.cpp; path = ../src/entry_point.cpp; sourceTree = "<group>"; };
+		360377333740D8A2FD15BBE6 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../src/main.cpp; sourceTree = "<group>"; };
 		4DA100C319512824B7570663 /* example.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = example.h; path = ../src/example.h; sourceTree = "<group>"; };
 		920CC7DC1C3F38E0005B261E /* flow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = flow.cpp; path = ../../../src/flow/flow.cpp; sourceTree = "<group>"; };
 		920CC7DD1C3F38E0005B261E /* flow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = flow.h; path = ../../../src/flow/flow.h; sourceTree = "<group>"; };
@@ -181,7 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				920CC7DB1C3F38D4005B261E /* flow */,
-				360377333740D8A2FD15BBE6 /* entry_point.cpp */,
+				360377333740D8A2FD15BBE6 /* main.cpp */,
 				0BF9628FC8D38F9748F0CDEB /* example.cpp */,
 				4DA100C319512824B7570663 /* example.h */,
 			);
@@ -304,7 +304,7 @@
 			files = (
 				920CC7E31C3F38E0005B261E /* Scene.cpp in Sources */,
 				920CC7E41C3F38E0005B261E /* Transition.cpp in Sources */,
-				2DC477AC10D6C07B3FE008F6 /* entry_point.cpp in Sources */,
+				2DC477AC10D6C07B3FE008F6 /* main.cpp in Sources */,
 				DA49ED8903C628BA578C8670 /* example.cpp in Sources */,
 				920CC7E21C3F38E0005B261E /* flow.cpp in Sources */,
 			);

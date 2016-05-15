@@ -110,11 +110,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="../src/entry_point.cpp" />
     <ClCompile Include="../src/example.cpp" />
     <ClCompile Include="..\..\..\src\flow\flow.cpp" />
     <ClCompile Include="..\..\..\src\flow\Scene.cpp" />
     <ClCompile Include="..\..\..\src\flow\Transition.cpp" />
+    <ClCompile Include="..\src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="../src/example.h" />

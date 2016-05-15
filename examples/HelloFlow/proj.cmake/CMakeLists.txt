@@ -11,7 +11,7 @@ include_directories(${OXYGINE_FLOW_INCLUDE_DIRS})
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 add_executable(HelloFlow
-	../src/entry_point.cpp
+	../src/main.cpp
 	../src/example.h 
 	../src/example.cpp)
 

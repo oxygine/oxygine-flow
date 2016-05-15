@@ -15,7 +15,7 @@ SET(CMAKE_EXECUTABLE_SUFFIX ".html")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wno-warn-absolute-paths")
 
 add_executable(HelloFlow
-	../src/entry_point.cpp
+	../src/main.cpp
 	../src/example.h 
 	../src/example.cpp)
 

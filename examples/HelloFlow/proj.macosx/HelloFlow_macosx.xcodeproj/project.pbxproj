@@ -15,7 +15,7 @@
 		0405A00118720D2200BA6557 /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04059FF11872031A00BA6557 /* libpng.a */; };
 		049B57321871FBE900EF3C66 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049B57311871FBE900EF3C66 /* Cocoa.framework */; };
 		049B574A1871FBE900EF3C66 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 049B57491871FBE900EF3C66 /* Images.xcassets */; };
-		2DC477AC10D6C07B3FE008F6 /* entry_point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 360377333740D8A2FD15BBE6 /* entry_point.cpp */; };
+		2DC477AC10D6C07B3FE008F6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 360377333740D8A2FD15BBE6 /* main.cpp */; };
 		920CC7F31C3F3A6F005B261E /* flow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 920CC7ED1C3F3A6F005B261E /* flow.cpp */; };
 		920CC7F41C3F3A6F005B261E /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 920CC7EF1C3F3A6F005B261E /* Scene.cpp */; };
 		920CC7F51C3F3A6F005B261E /* Transition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 920CC7F11C3F3A6F005B261E /* Transition.cpp */; };
@@ -92,7 +92,7 @@
 		04A57D761871FFEB0068B1E5 /* oxygine_macosx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = oxygine_macosx.xcodeproj; path = "../../../../oxygine-framework//oxygine/SDL/macosx/oxygine_macosx/oxygine_macosx.xcodeproj"; sourceTree = "<group>"; };
 		04A57D7E1872012A0068B1E5 /* SDL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDL.xcodeproj; path = "../../../..//SDL/Xcode/SDL/SDL.xcodeproj"; sourceTree = "<group>"; };
 		0BF9628FC8D38F9748F0CDEB /* example.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = example.cpp; path = ../src/example.cpp; sourceTree = "<group>"; };
-		360377333740D8A2FD15BBE6 /* entry_point.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = entry_point.cpp; path = ../src/entry_point.cpp; sourceTree = "<group>"; };
+		360377333740D8A2FD15BBE6 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../src/main.cpp; sourceTree = "<group>"; };
 		4DA100C319512824B7570663 /* example.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = example.h; path = ../src/example.h; sourceTree = "<group>"; };
 		920CC7ED1C3F3A6F005B261E /* flow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = flow.cpp; path = ../../../src/flow/flow.cpp; sourceTree = "<group>"; };
 		920CC7EE1C3F3A6F005B261E /* flow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = flow.h; path = ../../../src/flow/flow.h; sourceTree = "<group>"; };
@@ -187,7 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				920CC7E91C3F3A63005B261E /* flow */,
-				360377333740D8A2FD15BBE6 /* entry_point.cpp */,
+				360377333740D8A2FD15BBE6 /* main.cpp */,
 				0BF9628FC8D38F9748F0CDEB /* example.cpp */,
 				4DA100C319512824B7570663 /* example.h */,
 			);
@@ -333,7 +333,7 @@
 			files = (
 				920CC7F41C3F3A6F005B261E /* Scene.cpp in Sources */,
 				920CC7F51C3F3A6F005B261E /* Transition.cpp in Sources */,
-				2DC477AC10D6C07B3FE008F6 /* entry_point.cpp in Sources */,
+				2DC477AC10D6C07B3FE008F6 /* main.cpp in Sources */,
 				DA49ED8903C628BA578C8670 /* example.cpp in Sources */,
 				920CC7F31C3F3A6F005B261E /* flow.cpp in Sources */,
 			);
