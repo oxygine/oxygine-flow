@@ -154,6 +154,8 @@ namespace oxygine
             _done = false;
             _remove = false;
 
+            update();
+
             LOGD("%-20s '%s'", "Scene.preShowing", getName().c_str());
             Event ev(EVENT_PRE_SHOWING);
             dispatchEvent(&ev);
