@@ -21,3 +21,5 @@ examples/HelloFlow/proj.win32/Debug_v*
 *.sdf
 examples/HelloFlow/proj.win32/Release_v*
 examples/HelloFlow/proj.cmake/build/
+/examples/HelloFlow/proj.cmake/build_emsc
+/examples/HelloFlow/proj.cmake/build_emsc_release
