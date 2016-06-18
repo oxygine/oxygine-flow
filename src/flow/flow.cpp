@@ -187,7 +187,12 @@ namespace oxygine
             if (current->_done)
             {
                 scenes.pop_back();
-                if (!scenes.empty())
+                if (scenes.empty())
+                {
+                    current->_resultCB = resultCallback();
+                    current->_finishEvent = SceneEvent();
+                }
+                else
                 {
                     spScene prev = scenes.back();
                     phaseBegin(current, prev, true);
