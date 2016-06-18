@@ -204,6 +204,7 @@ namespace oxygine
         void Scene::remove()
         {
             _remove = true;
+            _resultCB = resultCallback();
             OX_ASSERT(_dialog == false);
         }
     }
