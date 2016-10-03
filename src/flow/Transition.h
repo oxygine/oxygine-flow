@@ -17,12 +17,15 @@ namespace oxygine
         class Transition : public Object
         {
         public:
+
+			static void assign(Scene* scene);
+
             Transition();
 
             void run(Flow* f, spScene current, spScene next, bool back);
 
             virtual void _attach(spScene current, spScene next, bool back);
-            virtual void _run(spScene current, spScene next, bool back);
+			virtual void _run(spScene current, spScene next, bool back) {}
             virtual void _clear() {}
 
             void waitTween(spTween);
@@ -33,6 +36,15 @@ namespace oxygine
             bool _done;
             bool _singleDirection;
         };
+
+		class TransitionSimple : public Transition
+		{
+		public:
+			static void assign(Scene* scene);
+
+		protected:
+			void _run(spScene current, spScene next, bool back) override;
+		};
 
         class TransitionMove : public Transition
         {

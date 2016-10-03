@@ -104,6 +104,7 @@ namespace oxygine
         spTransition Scene::runTransition(Flow* f, spScene current, bool back)
         {
             _transitionDone = false;
+			current->_transitionDone = false;
             return back ? _runTransitionOut(f, current) : _runTransitionIn(f, current);
         }
 

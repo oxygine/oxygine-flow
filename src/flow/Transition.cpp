@@ -15,6 +15,13 @@ namespace oxygine
     namespace flow
     {
 
+		void Transition::assign(Scene* scene)
+		{
+			spTransition t = new Transition;
+			scene->setTransitionIn(t);
+			scene->setTransitionOut(t);
+		}
+
         Transition::Transition() : _done(false), _singleDirection(false), _flow(0)
         {
 
@@ -59,10 +66,17 @@ namespace oxygine
             }
         }
 
-        void Transition::_run(spScene current, spScene next, bool back)
-        {
-            _done = true;
-        }
+		void TransitionSimple::assign(Scene* scene)
+		{
+			spTransition t = new TransitionSimple;
+			scene->setTransitionIn(t);
+			scene->setTransitionOut(t);
+		}
+
+		void TransitionSimple::_run(spScene current, spScene next, bool back)
+		{
+			_done = true;
+		}
 
         void TransitionMove::assign(Scene* scene)
         {
