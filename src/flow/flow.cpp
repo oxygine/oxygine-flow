@@ -257,7 +257,7 @@ namespace oxygine
 
             if (_transition)
             {
-				//we don't know who controls transition, next, current, or Transition
+                //we don't know who controls transition, next, current, or Transition
                 if (_trans && _trans->_done || _next->_transitionDone || _current->_transitionDone)
                     phaseEnd();
 

@@ -103,7 +103,7 @@ namespace oxygine
 
             void setTransitionIn(spTransition t);
             void setTransitionOut(spTransition t);
-
+            void removeTransitions() { _transitionIn = _transitionOut = 0; }
 
             spActor         getHolder() const { return _holder; }
 
@@ -125,7 +125,7 @@ namespace oxygine
             virtual spTransition _runTransitionOut(Flow*, spScene current);
 
             spActor _holder;
-			bool _transitionDone;
+            bool _transitionDone;
 
         private:
 

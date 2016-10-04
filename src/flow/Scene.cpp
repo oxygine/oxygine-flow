@@ -104,7 +104,7 @@ namespace oxygine
         spTransition Scene::runTransition(Flow* f, spScene current, bool back)
         {
             _transitionDone = false;
-			current->_transitionDone = false;
+            current->_transitionDone = false;
             return back ? _runTransitionOut(f, current) : _runTransitionIn(f, current);
         }
 
@@ -179,6 +179,11 @@ namespace oxygine
         void Scene::postHiding()
         {
             LOGD("%-20s '%s'", "Scene.postHiding", getName().c_str());
+            _transitionIn->_current = 0;
+            _transitionIn->_next = 0;
+            _transitionOut->_current = 0;
+            _transitionOut->_next = 0;
+
             Event ev(EVENT_POST_HIDING);
             dispatchEvent(&ev);
         }
