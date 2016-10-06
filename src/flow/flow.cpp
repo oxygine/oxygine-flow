@@ -31,6 +31,7 @@ namespace oxygine
             _touchBlocker->setPriority(10000);
             _touchBlocker->setName("touchBlocker");
 
+            Flow::instance = Flow();
             Flow::instance.init();
         }
 
@@ -46,6 +47,11 @@ namespace oxygine
         {
             _transition = false;
             _back = false;
+        }
+
+        Flow::~Flow()
+        {
+
         }
 
         void Flow::init()

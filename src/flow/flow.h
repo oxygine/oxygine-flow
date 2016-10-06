@@ -38,6 +38,7 @@ namespace oxygine
             static Flow instance;
 
             Flow();
+            ~Flow();
 
             void init();
             void free();
