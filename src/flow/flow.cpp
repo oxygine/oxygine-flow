@@ -42,8 +42,8 @@ namespace oxygine
         {
             _touchBlocker->detach();
             _touchBlocker = 0;
-            _defaultTransition->_current = 0;
-            _defaultTransition->_next = 0;
+            //_defaultTransition->_current = 0;
+            //_defaultTransition->_next = 0;
             _defaultTransition = 0;
             Flow::instance.free();
         }

@@ -30,8 +30,8 @@ namespace oxygine
         void Transition::run(Flow* f, spScene current, spScene next, bool back)
         {
             _flow = f;
-            _current = current;
-            _next = next;
+            //_current = current;
+            //_next = next;
             //_done = false;
 
             _attach(current, next, back);
@@ -44,8 +44,8 @@ namespace oxygine
             {
                 //_done = true;
                 _clear();
-                _current = 0;
-                _next = 0;
+                //_current = 0;
+                //_next = 0;
                 _flow->phaseEnd();
             });
         }
@@ -388,7 +388,8 @@ namespace oxygine
 
         void TransitionQuads::_clear()
         {
-            _next->getHolder()->attachTo(getStage());
+            OX_ASSERT(!"not implemented");
+            //_next->getHolder()->attachTo(getStage());
 
             _holder->detach();
             _bg->detach();

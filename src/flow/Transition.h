@@ -31,8 +31,8 @@ namespace oxygine
             void waitTween(spTween);
 
             Flow* _flow;
-            spScene _current;
-            spScene _next;
+            //spScene _current;
+            //spScene _next;
             //bool _done;
             bool _singleDirection;
         };
