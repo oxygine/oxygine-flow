@@ -47,6 +47,7 @@ namespace oxygine
     namespace flow
     {
         extern bool _wasTouchBlocked;
+        extern spTransition _defaultTransition;
 
         Scene::Scene(): _done(false), _remove(false), _dialog(false), _inloop(false)
         {
@@ -56,7 +57,8 @@ namespace oxygine
             _holder->setSize(Stage::instance->getSize());
             _holder->setName("Scene::_holder");
 
-            TransitionFade::assign(this);
+            _transitionIn = _defaultTransition;
+            _transitionOut = _defaultTransition;
         }
 
         Scene::~Scene()
@@ -109,6 +111,8 @@ namespace oxygine
         spTransition Scene::_runTransitionIn(Flow* f, spScene current)
         {
             spTransition t = _transitionIn;
+            if (!t)
+                return 0;
             t->run(f, current, this, false);
             return t;
         }
@@ -116,6 +120,8 @@ namespace oxygine
         spTransition Scene::_runTransitionOut(Flow* f, spScene current)
         {
             spTransition t = current->_transitionOut;
+            if (!t)
+                return 0;
             t->run(f, current, this, true);
             return t;
         }

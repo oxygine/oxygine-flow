@@ -75,7 +75,10 @@ namespace oxygine
 
         void TransitionSimple::_run(spScene current, spScene next, bool back)
         {
-
+            spScene target = back ? current : next;
+            spActor holder = target->getHolder();
+            spTween tween = holder->addTween(TweenDummy(), 1);
+            waitTween(tween);
         }
 
         void TransitionMove::assign(Scene* scene)

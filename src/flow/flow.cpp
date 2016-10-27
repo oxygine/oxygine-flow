@@ -20,6 +20,7 @@ namespace oxygine
         Flow Flow::instance;
 
 
+        spTransition _defaultTransition;
 
 
         void init()
@@ -31,6 +32,8 @@ namespace oxygine
             _touchBlocker->setPriority(10000);
             _touchBlocker->setName("touchBlocker");
 
+            _defaultTransition = new TransitionFade;
+
             Flow::instance = Flow();
             Flow::instance.init();
         }
@@ -39,6 +42,9 @@ namespace oxygine
         {
             _touchBlocker->detach();
             _touchBlocker = 0;
+            _defaultTransition->_current = 0;
+            _defaultTransition->_next = 0;
+            _defaultTransition = 0;
             Flow::instance.free();
         }
 
