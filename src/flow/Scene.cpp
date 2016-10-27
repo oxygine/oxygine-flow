@@ -48,7 +48,7 @@ namespace oxygine
     {
         extern bool _wasTouchBlocked;
 
-        Scene::Scene(): _done(false), _remove(false), _dialog(false), _inloop(false), _transitionDone(false)//, _finishEvent(0)
+        Scene::Scene(): _done(false), _remove(false), _dialog(false), _inloop(false)
         {
             setName("Scene");
             _holder = new Actor;
@@ -103,8 +103,6 @@ namespace oxygine
 
         spTransition Scene::runTransition(Flow* f, spScene current, bool back)
         {
-            _transitionDone = false;
-            current->_transitionDone = false;
             return back ? _runTransitionOut(f, current) : _runTransitionIn(f, current);
         }
 

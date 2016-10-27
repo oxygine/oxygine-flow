@@ -22,7 +22,7 @@ namespace oxygine
             scene->setTransitionOut(t);
         }
 
-        Transition::Transition() : _done(false), _singleDirection(false), _flow(0)
+        Transition::Transition() :  _singleDirection(false), _flow(0)
         {
 
         }
@@ -32,7 +32,7 @@ namespace oxygine
             _flow = f;
             _current = current;
             _next = next;
-            _done = false;
+            //_done = false;
 
             _attach(current, next, back);
             _run(current, next, back);
@@ -42,7 +42,7 @@ namespace oxygine
         {
             t->setDoneCallback([ = ](Event*)
             {
-                _done = true;
+                //_done = true;
                 _clear();
                 _current = 0;
                 _next = 0;
@@ -75,7 +75,7 @@ namespace oxygine
 
         void TransitionSimple::_run(spScene current, spScene next, bool back)
         {
-            _done = true;
+
         }
 
         void TransitionMove::assign(Scene* scene)

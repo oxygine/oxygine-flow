@@ -46,6 +46,7 @@ namespace oxygine
         Flow::Flow()
         {
             _transition = false;
+            _transitionDone = false;
             _back = false;
         }
 
@@ -267,7 +268,8 @@ namespace oxygine
             if (_transition)
             {
                 //we don't know who controls transition, next, current, or Transition
-                if (_trans && _trans->_done || _next->_transitionDone || _current->_transitionDone)
+                //if (_trans && _trans->_done || _next->_transitionDone || _current->_transitionDone)
+                if (_transitionDone)
                     phaseEnd();
 
                 return;

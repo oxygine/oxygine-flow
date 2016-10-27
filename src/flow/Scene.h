@@ -125,7 +125,7 @@ namespace oxygine
             virtual spTransition _runTransitionOut(Flow*, spScene current);
 
             spActor _holder;
-            bool _transitionDone;
+            //bool _transitionDone;
 
         private:
 

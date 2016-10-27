@@ -61,6 +61,7 @@ namespace oxygine
             bool _back;
 
             spTransition _trans;
+            bool _transitionDone;
             spScene _current;
             spScene _next;
         };

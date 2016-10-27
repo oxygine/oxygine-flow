@@ -33,7 +33,7 @@ namespace oxygine
             Flow* _flow;
             spScene _current;
             spScene _next;
-            bool _done;
+            //bool _done;
             bool _singleDirection;
         };
 
