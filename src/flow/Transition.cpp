@@ -138,20 +138,7 @@ namespace oxygine
         {
             spScene target = back ? current : next;
 
-            int duration = 500;
-#if OXYGINE_RENDERER>3
-            //target->getHolder()->setAlpha(back ? 255 : 0);
-            spTween tween = target->getHolder()->addTween(
-                                TweenAlphaFade(!back, PostProcessOptions().fullscreen().clear(Color(0, 0, 0, 255))), duration, 1, false, 0);
-#elif OXYGINE_RENDERER>2
-            //target->getHolder()->setAlpha(back ? 255 : 0);
-            spTween tween = target->getHolder()->addTween(
-                                TweenAlphaFade(!back, TweenAlphaFade::opt_fullscreen), duration, 1, false, 0);
-#else
-            target->getHolder()->setAlpha(back ? 255 : 0);
-            spTween tween = target->getHolder()->addTween(
-                                Actor::TweenAlpha(back ? 0 : 255), duration, 1, false, 0);
-#endif
+            spTween tween = target->getHolder()->addTween(TweenAlphaFade(!back, PostProcessOptions().fullscreen().clear(Color(0, 0, 0, 255))), _tweenOpt._duration, 1, false, 0);
             waitTween(tween);
         }
 
@@ -176,7 +163,7 @@ namespace oxygine
             current->getHolder()->insertSiblingAfter(left);
             current->getHolder()->insertSiblingAfter(right);
 
-            int dur = 500;
+            int dur = _tweenOpt._duration;
             left->setX(-left->getWidth());
             right->setX(getStage()->getWidth());
 

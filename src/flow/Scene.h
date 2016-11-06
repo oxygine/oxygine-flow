@@ -2,7 +2,6 @@
 #include "EventDispatcher.h"
 #include "Actor.h"
 #include "Stage.h"
-#include "blocking.h"
 #include <functional>
 
 namespace oxygine
