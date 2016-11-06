@@ -42,8 +42,6 @@ namespace oxygine
         {
             _touchBlocker->detach();
             _touchBlocker = 0;
-            //_defaultTransition->_current = 0;
-            //_defaultTransition->_next = 0;
             _defaultTransition = 0;
             Flow::instance.free();
         }
@@ -171,7 +169,7 @@ namespace oxygine
                 {
                     current->_resultCB(&current->_finishEvent);
                     current->_resultCB = resultCallback();
-                    current->_finishEvent = SceneEvent();
+                    current->_finishEvent = FlowEvent();
                 }
             }
 
@@ -206,7 +204,7 @@ namespace oxygine
                 if (scenes.empty())
                 {
                     current->_resultCB = resultCallback();
-                    current->_finishEvent = SceneEvent();
+                    current->_finishEvent = FlowEvent();
                 }
                 else
                 {

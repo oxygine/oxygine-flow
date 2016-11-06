@@ -22,7 +22,7 @@ namespace oxygine
             scene->setTransitionOut(t);
         }
 
-        Transition::Transition() :  _singleDirection(false), _flow(0)
+        Transition::Transition() : _singleDirection(false), _flow(0), _tweenOpt(500)
         {
 
         }
@@ -83,7 +83,7 @@ namespace oxygine
 
         void TransitionMove::assign(Scene* scene)
         {
-            spTransition t = new TransitionMove;
+            spTransition t = new TransitionMove();
             scene->setTransitionIn(t);
             scene->setTransitionOut(t);
         }
@@ -94,36 +94,36 @@ namespace oxygine
             _fade->setPosition(-10000, -10000);
             _fade->setSize(Vector2(30000, 30000));
             _fade->setColor(Color(0, 0, 0, 128));
-            //_fade->setAlpha(0);
+
+            _src = Vector2(0.0f, -getStage()->getHeight());
+            _tweenOpt._ease = Tween::ease_inOutBack;
         }
 
         void TransitionMove::_run(spScene current, spScene next, bool back)
         {
-            Vector2 _src = Vector2(0.0f, -(float)getStage()->getHeight() + 0);
-            Vector2 _dest = Vector2(0.0f, 0.0f);
-            int _duration = 500;
-
+            Vector2 src = _src;
+            Vector2 dest = Vector2(0.0f, 0.0f);
 
             spScene target = back ? current : next;
 
             spActor holder = target->getHolder();
             if (back)
             {
-                std::swap(_src, _dest);
+                std::swap(src, dest);
 
-                spTween t = _fade->addTween(Actor::TweenAlpha(0), _duration);
+                spTween t = _fade->addTween(Actor::TweenAlpha(0), _tweenOpt._duration);
                 t->setDetachActor(true);
             }
             else
             {
                 _fade->setAlpha(0);
-                _fade->addTween(Actor::TweenAlpha(255), _duration);
+                _fade->addTween(Actor::TweenAlpha(255), _tweenOpt._duration);
                 holder->insertSiblingBefore(_fade);
             }
 
 
-            holder->setPosition(_src);
-            spTween tween = holder->addTween(Actor::TweenPosition(_dest), _duration, 1, false, 0, Tween::ease_inOutBack);
+            holder->setPosition(src);
+            spTween tween = holder->addTween(Actor::TweenPosition(dest), _tweenOpt);
             waitTween(tween);
         }
 

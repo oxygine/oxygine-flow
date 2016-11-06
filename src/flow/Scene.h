@@ -15,15 +15,15 @@ namespace oxygine
 
     namespace flow
     {
-        class SceneEvent : public Event
+        class FlowEvent : public Event
         {
         public:
-            SceneEvent(): Event(0) {}
+            FlowEvent(): Event(0) {}
             std::string action;
         };
 
         class Flow;
-        typedef std::function< void(SceneEvent*) > resultCallback;
+        typedef EventCallback resultCallback;
 
         DECLARE_SMART(Scene, spScene);
         DECLARE_SMART(Transition, spTransition);
@@ -103,6 +103,7 @@ namespace oxygine
 
             void setTransitionIn(spTransition t);
             void setTransitionOut(spTransition t);
+            void setTransition(spTransition tin, spTransition tout);
             void removeTransitions() { _transitionIn = _transitionOut = 0; }
 
             spActor         getHolder() const { return _holder; }
@@ -125,7 +126,6 @@ namespace oxygine
             virtual spTransition _runTransitionOut(Flow*, spScene current);
 
             spActor _holder;
-            //bool _transitionDone;
 
         private:
 
@@ -146,7 +146,7 @@ namespace oxygine
             void sceneShown(spScene);
             void sceneHidden(spScene);
 
-            SceneEvent _finishEvent;
+            FlowEvent _finishEvent;
             resultCallback _resultCB;
 
         private:

@@ -29,12 +29,14 @@ namespace oxygine
             virtual void _clear() {}
 
             void waitTween(spTween);
+            TweenOptions getTweenOptions() const { return _tweenOpt; }
+            void         setTweenOptions(const TweenOptions& opt) { _tweenOpt = opt; }
 
             Flow* _flow;
-            //spScene _current;
-            //spScene _next;
-            //bool _done;
             bool _singleDirection;
+
+        protected:
+            TweenOptions _tweenOpt;
         };
 
         class TransitionSimple : public Transition
@@ -46,6 +48,7 @@ namespace oxygine
             void _run(spScene current, spScene next, bool back) override;
         };
 
+        DECLARE_SMART(TransitionMove, spTransitionMove);
         class TransitionMove : public Transition
         {
         public:
@@ -57,10 +60,12 @@ namespace oxygine
             Scene::_transitionOut = _transitionIn;
             */
             TransitionMove();
+            void setSrcPosition(const Vector2& v) { _src = v; }
 
         protected:
             void _run(spScene current, spScene next, bool back) override;
             spColorRectSprite _fade;
+            Vector2 _src;
         };
 
         class TransitionFade : public Transition

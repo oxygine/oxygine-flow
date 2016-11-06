@@ -13,9 +13,7 @@ namespace oxygine
         DECLARE_SMART(Transition, spTransition);
         class Flow;
 
-        class SceneEvent;
-        inline void doNothingEventCallback(SceneEvent*) {}
-        typedef std::function< void(SceneEvent*) > resultCallback;
+        inline void doNothingEventCallback(Event*) {}
 
         /**initializing oxygine-flow subsystem*/
         void init();

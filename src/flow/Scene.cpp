@@ -16,8 +16,6 @@
 //#define LOGD(...) {}
 namespace oxygine
 {
-
-
     bool checkQuit()
     {
         bool back = false;
@@ -77,6 +75,12 @@ namespace oxygine
         void Scene::setTransitionOut(spTransition t)
         {
             _transitionOut = t;
+        }
+
+        void Scene::setTransition(spTransition tin, spTransition tout)
+        {
+            setTransitionIn(tin);
+            setTransitionOut(tout);
         }
 
         void Scene::finishOnClick(spActor actor)
@@ -205,7 +209,7 @@ namespace oxygine
                 if (ev)
                     static_cast<Event&>(_finishEvent) = *ev;
                 else
-                    _finishEvent = SceneEvent();
+                    _finishEvent = FlowEvent();
             }
 
             //Flow::instance.checkDone();
