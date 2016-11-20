@@ -106,6 +106,7 @@ namespace oxygine
             void removeTransitions() { _transitionIn = _transitionOut = 0; }
 
             spActor         getHolder() const { return _holder; }
+            bool            isDialog() const { return _dialog; }
 
         protected:
 
