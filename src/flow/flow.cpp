@@ -10,11 +10,14 @@ namespace oxygine
 
     namespace flow
     {
+        int BLOCK_TOUCH_DURATION = 300;
+
         spActor _touchBlocker;
 
         Vector2 _blockedTouchPosition(0, 0);
-        bool _wasTouchBlocked = false;
-        bool _wasBackBlocked = false;
+        bool _wasTouchBlocked;
+        bool _wasBackBlocked;
+        timeMS _tm = 0;
 
 
         Flow Flow::instance;
@@ -25,6 +28,9 @@ namespace oxygine
 
         void init()
         {
+            _tm = 0;
+            _wasTouchBlocked = false;
+            _wasBackBlocked = false;
             _touchBlocker = new Actor;
             _touchBlocker->setName("Scene::_touchBlocker");
             _touchBlocker->setPosition(-10000, -10000);
@@ -101,6 +107,8 @@ namespace oxygine
 
         void Flow::blockedTouch(Event* ev)
         {
+            if (_tm + BLOCK_TOUCH_DURATION > getTimeMS())
+                return;
             TouchEvent* event = safeCast<TouchEvent*>(ev);
             _blockedTouchPosition = event->getPointer()->getPosition();
             _wasTouchBlocked = true;
@@ -132,6 +140,7 @@ namespace oxygine
             getStage()->addChild(_touchBlocker);
             _wasTouchBlocked = false;
             _wasBackBlocked = false;
+            _tm = getTimeMS();
             getStage()->addEventListener(TouchEvent::CLICK, CLOSURE(this, &Flow::blockedTouch));
         }
 
