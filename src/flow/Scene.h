@@ -40,6 +40,12 @@ namespace oxygine
                 //fired after leaving scene
                 EVENT_LEAVING =         makefourcc('S', 'L', 'e', 'a'),
 
+                //fired before leaving scene
+                EVENT_PRE_LEAVING = makefourcc('S', 'P', 'r', 'L'),
+
+                //fired after leaving scene
+                EVENT_POST_LEAVING = makefourcc('S', 'P', 'o', 'L'),
+
                 //current scene will be shown now with transition
                 EVENT_PRE_SHOWING =     makefourcc('S', 'P', 'r', 'S'),
 
@@ -142,6 +148,8 @@ namespace oxygine
             void postHiding();
             void entering();
             void leaving();
+            void preLeaving();
+            void postLeaving();
 
             void sceneShown(spScene);
             void sceneHidden(spScene);
