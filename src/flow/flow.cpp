@@ -135,7 +135,11 @@ namespace oxygine
                 next->preShowing();
 
             if ((next->_dialog && _back) || !next->_dialog)
+            {
+                if (_current->_done)
+                    current->preLeaving();
                 current->preHiding();
+            }
 
             if (!back)
                 current->sceneShown(next);
@@ -179,6 +183,7 @@ namespace oxygine
             if (current->_done)
             {
                 current->leaving();
+                current->postLeaving();
                 if (current->_resultCB)
                 {
                     current->_resultCB(&current->_finishEvent);

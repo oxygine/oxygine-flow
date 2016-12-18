@@ -143,6 +143,20 @@ namespace oxygine
             dispatchEvent(&ev);
         }
 
+        void Scene::preLeaving()
+        {
+            //LOGD("%-20s '%s'", "Scene.preLeaving", getName().c_str());
+            Event ev(EVENT_PRE_LEAVING);
+            dispatchEvent(&ev);
+        }
+
+        void Scene::postLeaving()
+        {
+            //LOGD("%-20s '%s'", "Scene.postLeaving", getName().c_str());
+            Event ev(EVENT_POST_LEAVING);
+            dispatchEvent(&ev);
+        }
+
         void Scene::sceneShown(spScene s)
         {
             LOGD("%-20s '%s' - '%s'", "Scene.sceneShown on ", getName().c_str(), s->getName().c_str());
