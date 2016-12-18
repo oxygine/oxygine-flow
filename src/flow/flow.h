@@ -52,6 +52,8 @@ namespace oxygine
 
             void blockedTouch(Event*);
 
+            bool hasSceneInStack(spScene) const;
+
             std::vector<spScene> scenes;
             std::vector<spScene> scenes2show;
 

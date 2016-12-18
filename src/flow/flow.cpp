@@ -114,6 +114,11 @@ namespace oxygine
             _wasTouchBlocked = true;
         }
 
+        bool Flow::hasSceneInStack(spScene scene) const
+        {
+            return std::find(scenes.begin(), scenes.end(), scene) != scenes.end();
+        }
+
         void Flow::phaseBegin(spScene current, spScene next, bool back)
         {
             _back = back;
