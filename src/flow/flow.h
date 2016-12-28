@@ -50,6 +50,8 @@ namespace oxygine
             void checkDone();
             void checkShow();
 
+            bool isTransitionPhase() const { return _transition; }
+
             void blockedTouch(Event*);
 
             bool hasSceneInStack(spScene) const;
