@@ -112,7 +112,7 @@ namespace oxygine
                 std::swap(src, dest);
 
                 spTween t = _fade->addTween(Actor::TweenAlpha(0), _tweenOpt._duration);
-                t->setDetachActor(true);
+                t->detachWhenDone();
             }
             else
             {
@@ -218,7 +218,7 @@ namespace oxygine
         void TransitionQuads::clicked(Event* ev)
         {
             TouchEvent* te = (TouchEvent*)ev;
-            _center = getStage()->local2global(te->localPosition);
+            _center = getStage()->local2parent(te->localPosition);
         }
 
 
@@ -248,7 +248,7 @@ namespace oxygine
                 _holder->setVisible(true);
                 _holder->render(rs);
                 //rs.material->render(_holder.get(), rs);
-                _holder->setPosition(getStage()->global2local(Vector2(0, 0)));
+                _holder->setPosition(getStage()->parent2local(Vector2(0, 0)));
                 //_holder->setVisible(false);
                 //r.end();
                 rs.material->finish();
@@ -278,7 +278,7 @@ namespace oxygine
         {
             Point ds = core::getDisplaySize();
             spActor holder = new Actor;
-            holder->setPosition(getStage()->global2local(Vector2(0, 0)));
+            holder->setPosition(getStage()->parent2local(Vector2(0, 0)));
             //holder->setVisible(false);
             holder->setSize(core::getDisplaySize());
             holder->attachTo(getStage());
