@@ -339,5 +339,10 @@ namespace oxygine
 
             f->show(s, cb);
         }
+
+        Flow & get()
+        {
+            return Flow::instance;
+        }
     }
 }
