@@ -124,7 +124,7 @@ namespace oxygine
 
             /**dialog mode*/
             bool _dialog;
-
+            bool _allowDialogsOnTop;
 
 
             spTransition runTransition(Flow*, spScene current, bool back);
@@ -140,7 +140,7 @@ namespace oxygine
 
             bool _remove;
             bool _done;
-            bool _inloop;
+            bool _inloop;            
 
             void preShowing();
             void postShowing();

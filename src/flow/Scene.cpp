@@ -46,7 +46,7 @@ namespace oxygine
         extern bool _wasTouchBlocked;
         extern spTransition _defaultTransition;
 
-        Scene::Scene(): _done(false), _remove(false), _dialog(false), _inloop(false)
+        Scene::Scene(): _done(false), _remove(false), _dialog(false), _inloop(false), _allowDialogsOnTop(true)
         {
             setName("Scene");
             _holder = new Actor;

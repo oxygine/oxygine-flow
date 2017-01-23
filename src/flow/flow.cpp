@@ -235,23 +235,45 @@ namespace oxygine
 
         void Flow::checkShow()
         {
+            if (scenes2show.empty())
+                return;
+
             if (scenes.back()->_done)
                 return;
 
             if (_transition)
                 return;
 
-
-            spScene next = scenes2show.front();
-            scenes2show.erase(scenes2show.begin());
-
             spScene current = scenes.back();
+            
+
+            std::vector<spScene>::iterator it = scenes2show.begin();
+            
+            if (!current->_allowDialogsOnTop)
+            {
+                for (; it != scenes2show.end(); ++it)
+                {
+                    if ((*it)->_dialog)
+                        continue;
+                    break;
+                }
+            }
+
+            if (it == scenes2show.end())
+                return;
+
+            spScene next = *it;
+
 
             if (current->_dialog)
             {
                 OX_ASSERT(next->_dialog && "you can't show fullscreen scene on top of dialog");
                 OX_ASSERT(!current->_remove && "you can't remove dialog from flow");
+                if (!next->_dialog)
+                    return;
             }
+
+            scenes2show.erase(it);            
 
             scenes.push_back(next);
             phaseBegin(current, next, false);
@@ -299,8 +321,7 @@ namespace oxygine
             }
 
             checkDone();
-            if (!scenes2show.empty())
-                checkShow();
+            checkShow();
 
             if (_transition)
                 return;
