@@ -245,10 +245,10 @@ namespace oxygine
                 return;
 
             spScene current = scenes.back();
-            
+
 
             std::vector<spScene>::iterator it = scenes2show.begin();
-            
+
             if (!current->_allowDialogsOnTop)
             {
                 for (; it != scenes2show.end(); ++it)
@@ -273,7 +273,7 @@ namespace oxygine
                     return;
             }
 
-            scenes2show.erase(it);            
+            scenes2show.erase(it);
 
             scenes.push_back(next);
             phaseBegin(current, next, false);
@@ -361,7 +361,7 @@ namespace oxygine
             f->show(s, cb);
         }
 
-        Flow & get()
+        Flow& get()
         {
             return Flow::instance;
         }

@@ -27,7 +27,7 @@ namespace oxygine
         /**shows next scene and call callback when it was finished*/
         void show(spScene, const resultCallback& cb = doNothingEventCallback, Flow* = 0);
 
-        Flow &get();
+        Flow& get();
 
 
         class Flow

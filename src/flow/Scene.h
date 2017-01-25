@@ -140,7 +140,7 @@ namespace oxygine
 
             bool _remove;
             bool _done;
-            bool _inloop;            
+            bool _inloop;
 
             void preShowing();
             void postShowing();
