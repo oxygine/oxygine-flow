@@ -174,8 +174,6 @@ namespace oxygine
             if (!_back || !current->_dialog)
                 next->postShowing();
 
-            if (_back)
-                next->sceneHidden(current);
 
 
             getStage()->removeEventListener(TouchEvent::CLICK, CLOSURE(this, &Flow::blockedTouch));
@@ -191,6 +189,9 @@ namespace oxygine
                     current->_finishEvent = FlowEvent();
                 }
             }
+
+            if (_back)
+                next->sceneHidden(current);
 
 
             if (current->_remove)
