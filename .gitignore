@@ -23,3 +23,6 @@ examples/HelloFlow/proj.win32/Release_v*
 examples/HelloFlow/proj.cmake/build/
 /examples/HelloFlow/proj.cmake/build_emsc
 /examples/HelloFlow/proj.cmake/build_emsc_release
+examples/HelloFlow/proj.win32/.vs/HelloFlow/v14/.suo
+examples/HelloFlow/proj.android/build/
+examples/HelloFlow/proj.android/.gradle/
