@@ -129,18 +129,11 @@ namespace oxygine
             return t;
         }
 
-        void Scene::entering()
+        void Scene::preEntering()
         {
-            LOGD("%-20s '%s'", "Scene.entering", getName().c_str());
-            Event ev(EVENT_ENTERING);
-            dispatchEvent(&ev);
-        }
-
-        void Scene::leaving()
-        {
-            LOGD("%-20s '%s'", "Scene.leaving", getName().c_str());
-            Event ev(EVENT_LEAVING);
-            dispatchEvent(&ev);
+            LOGD("%-20s '%s'", "Scene.preEntering", getName().c_str());
+            Event ev2(EVENT_PRE_ENTERING);
+            dispatchEvent(&ev2);
         }
 
         void Scene::preLeaving()
@@ -152,9 +145,9 @@ namespace oxygine
 
         void Scene::postLeaving()
         {
-            //LOGD("%-20s '%s'", "Scene.postLeaving", getName().c_str());
-            Event ev(EVENT_POST_LEAVING);
-            dispatchEvent(&ev);
+            LOGD("%-20s '%s'", "Scene.postLeaving", getName().c_str());
+            Event ev2(EVENT_POST_LEAVING);
+            dispatchEvent(&ev2);
         }
 
         void Scene::sceneShown(spScene s)
@@ -188,10 +181,12 @@ namespace oxygine
             LOGD("%-20s '%s'", "Scene.postShowing", getName().c_str());
             Event ev(EVENT_POST_SHOWING);
             dispatchEvent(&ev);
+            _inloop = true;
         }
 
         void Scene::preHiding()
         {
+            _inloop = false;
             LOGD("%-20s '%s'", "Scene.preHiding", getName().c_str());
             Event ev(EVENT_PRE_HIDING);
             dispatchEvent(&ev);

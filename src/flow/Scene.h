@@ -35,10 +35,7 @@ namespace oxygine
             enum
             {
                 //fired before entering to scene
-                EVENT_ENTERING =        makefourcc('S', 'E', 'n', 't'),
-
-                //fired after leaving scene
-                EVENT_LEAVING =         makefourcc('S', 'L', 'e', 'a'),
+                EVENT_PRE_ENTERING = makefourcc('S', 'P', 'E', 'n'),
 
                 //fired before leaving scene
                 EVENT_PRE_LEAVING = makefourcc('S', 'P', 'r', 'L'),
@@ -132,6 +129,7 @@ namespace oxygine
             virtual spTransition _runTransitionOut(Flow*, spScene current);
 
             spActor _holder;
+            bool _inloop;
 
         private:
 
@@ -140,14 +138,13 @@ namespace oxygine
 
             bool _remove;
             bool _done;
-            bool _inloop;
+            
 
             void preShowing();
             void postShowing();
             void preHiding();
             void postHiding();
-            void entering();
-            void leaving();
+            void preEntering();
             void preLeaving();
             void postLeaving();
 

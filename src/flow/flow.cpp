@@ -83,7 +83,7 @@ namespace oxygine
             if (scenes.empty())
             {
                 scenes.push_back(scene);
-                scene->entering();
+                scene->preEntering();
                 scene->preShowing();
                 scene->_holder->attachTo(getStage());
                 scene->postShowing();
@@ -129,7 +129,7 @@ namespace oxygine
 
 
             if (next && !_back)
-                next->entering();
+                next->preEntering();
 
             if (!_back || !current->_dialog)
                 next->preShowing();
@@ -180,7 +180,6 @@ namespace oxygine
 
             if (current->_done)
             {
-                current->leaving();
                 current->postLeaving();
                 if (current->_resultCB)
                 {
