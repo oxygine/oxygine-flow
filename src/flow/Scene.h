@@ -37,6 +37,9 @@ namespace oxygine
                 //fired before entering to scene
                 EVENT_PRE_ENTERING = makefourcc('S', 'P', 'E', 'n'),
 
+                //fired after entering to scene
+                EVENT_POST_ENTERING = makefourcc('S', 'P', 'S', 'E'),
+
                 //fired before leaving scene
                 EVENT_PRE_LEAVING = makefourcc('S', 'P', 'r', 'L'),
 
@@ -131,6 +134,9 @@ namespace oxygine
             spActor _holder;
             bool _inloop;
 
+            void _flowPreLeaving();
+            void _flowPostLeaving();
+
         private:
 
             spTransition _transitionIn;
@@ -145,6 +151,7 @@ namespace oxygine
             void preHiding();
             void postHiding();
             void preEntering();
+            void postEntering();
             void preLeaving();
             void postLeaving();
 

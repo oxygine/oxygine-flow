@@ -129,6 +129,18 @@ namespace oxygine
             return t;
         }
 
+        void Scene::_flowPreLeaving()
+        {
+            preLeaving();
+            preHiding();
+        }
+
+        void Scene::_flowPostLeaving()
+        {            
+            postHiding();
+            postLeaving();
+        }
+
         void Scene::preEntering()
         {
             LOGD("%-20s '%s'", "Scene.preEntering", getName().c_str());
@@ -136,9 +148,16 @@ namespace oxygine
             dispatchEvent(&ev2);
         }
 
+        void Scene::postEntering()
+        {
+            LOGD("%-20s '%s'", "Scene.postEntering", getName().c_str());
+            Event ev2(EVENT_POST_ENTERING);
+            dispatchEvent(&ev2);
+        }
+
         void Scene::preLeaving()
         {
-            //LOGD("%-20s '%s'", "Scene.preLeaving", getName().c_str());
+            LOGD("%-20s '%s'", "Scene.preLeaving", getName().c_str());
             Event ev(EVENT_PRE_LEAVING);
             dispatchEvent(&ev);
         }

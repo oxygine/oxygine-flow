@@ -86,6 +86,7 @@ namespace oxygine
                 scene->preEntering();
                 scene->preShowing();
                 scene->_holder->attachTo(getStage());
+                scene->postEntering();
                 scene->postShowing();
                 scene->_resultCB = cb;
                 return;
@@ -173,6 +174,9 @@ namespace oxygine
 
             if (!_back || !current->_dialog)
                 next->postShowing();
+
+            if (next && !_back)
+                next->postEntering();
 
 
 
