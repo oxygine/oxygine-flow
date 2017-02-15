@@ -120,6 +120,16 @@ namespace oxygine
             return std::find(scenes.begin(), scenes.end(), scene) != scenes.end();
         }
 
+        void Flow::removeFromStack(spScene scene)
+        {
+            OX_ASSERT(scene->_inloop == false);
+            auto it = std::find(scenes.begin(), scenes.end(), scene);
+            if (it != scenes.end())
+            {
+                scenes.erase(it);
+            }
+        }
+
         void Flow::phaseBegin(spScene current, spScene next, bool back)
         {
             _back = back;

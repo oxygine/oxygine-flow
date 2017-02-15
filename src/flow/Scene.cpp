@@ -198,9 +198,9 @@ namespace oxygine
         void Scene::postShowing()
         {
             LOGD("%-20s '%s'", "Scene.postShowing", getName().c_str());
-            Event ev(EVENT_POST_SHOWING);
-            dispatchEvent(&ev);
             _inloop = true;
+            Event ev(EVENT_POST_SHOWING);
+            dispatchEvent(&ev);            
         }
 
         void Scene::preHiding()
@@ -247,6 +247,10 @@ namespace oxygine
             _remove = true;
             _resultCB = resultCallback();
             OX_ASSERT(_dialog == false);
+            if (!_holder->getParent())
+            {
+                flow::get().removeFromStack(this);
+            }
         }
     }
 }
