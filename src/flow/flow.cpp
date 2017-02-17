@@ -86,8 +86,8 @@ namespace oxygine
                 scene->preEntering();
                 scene->preShowing();
                 scene->_holder->attachTo(getStage());
-                scene->postEntering();
                 scene->postShowing();
+                scene->postEntering();
                 scene->_resultCB = cb;
                 return;
             }
@@ -147,12 +147,12 @@ namespace oxygine
 
             if ((next->_dialog && _back) || !next->_dialog)
             {
-                if (_current->_done)
+                if (_current->_done || _current->_remove)
                     current->preLeaving();
                 current->preHiding();
             }
 
-            if (!back)
+            if (!back && !current->_remove)
                 current->sceneShown(next);
 
             _trans = next->runTransition(this, current, back);
@@ -209,6 +209,7 @@ namespace oxygine
 
             if (current->_remove)
             {
+                current->postLeaving();
                 OX_ASSERT(next->_dialog == false);
                 std::vector<spScene>::iterator i = std::find(scenes.begin(), scenes.end(), current);
                 OX_ASSERT(i != scenes.end());

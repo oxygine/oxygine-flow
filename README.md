@@ -1,7 +1,7 @@
 # oxygine-flow
 oxygine-flow is an expansion for oxygine which provides a neat system for dialogue/scene organization based on an asynchronous model of events.
 
-Documentation: https://bitbucket.org/oxygine/oxygine-framework/wiki/oxygine-flow
+Documentation: https://github.com/oxygine/oxygine-framework/wiki/oxygine-flow
 
 Fully completed example is located in oxygine-flow\examples\HelloFlow
 
