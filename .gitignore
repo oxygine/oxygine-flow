@@ -26,3 +26,5 @@ examples/HelloFlow/proj.cmake/build/
 examples/HelloFlow/proj.win32/.vs/HelloFlow/v14/.suo
 examples/HelloFlow/proj.android/build/
 examples/HelloFlow/proj.android/.gradle/
+
+*.db

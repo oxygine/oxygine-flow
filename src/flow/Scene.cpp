@@ -136,7 +136,7 @@ namespace oxygine
         }
 
         void Scene::_flowPostLeaving()
-        {            
+        {
             postHiding();
             postLeaving();
         }
@@ -200,7 +200,7 @@ namespace oxygine
             LOGD("%-20s '%s'", "Scene.postShowing", getName().c_str());
             _inloop = true;
             Event ev(EVENT_POST_SHOWING);
-            dispatchEvent(&ev);            
+            dispatchEvent(&ev);
         }
 
         void Scene::preHiding()

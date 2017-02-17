@@ -213,6 +213,16 @@ namespace oxygine
                 std::vector<spScene>::iterator i = std::find(scenes.begin(), scenes.end(), current);
                 OX_ASSERT(i != scenes.end());
                 scenes.erase(i);
+
+                /*
+                for (auto it = scenes.begin(); it != scenes.end(); )
+                {
+                    if ((*it)->_remove)
+                        scenes.erase(it);
+                    else
+                        it++;
+                }
+                */
             }
 
 

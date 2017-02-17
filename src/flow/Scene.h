@@ -144,7 +144,7 @@ namespace oxygine
 
             bool _remove;
             bool _done;
-            
+
 
             void preShowing();
             void postShowing();
