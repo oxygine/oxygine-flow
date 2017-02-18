@@ -28,3 +28,4 @@ examples/HelloFlow/proj.android/build/
 examples/HelloFlow/proj.android/.gradle/
 
 *.db
+*.dll
