@@ -1,8 +1,10 @@
-#include "flow.h"
+﻿#include "flow.h"
 #include "Scene.h"
 #include "Transition.h"
 #include "DebugActor.h"
 #include "core/oxygine.h"
+
+#define LOGD(...) log::messageln("flow::" __VA_ARGS__)
 
 namespace oxygine
 {
@@ -139,20 +141,27 @@ namespace oxygine
             _transition = true;
 
 
-            if (next && !_back)
+            if (_back)
+            {
+                if (!current->_dialog)
+                    next->preShowing();
+            }
+            else
+            {
                 next->preEntering();
-
-            if (!_back || !current->_dialog)
                 next->preShowing();
+            }
 
-            if ((next->_dialog && _back) || !next->_dialog)
+
+            if (!next->_dialog || _back)
             {
                 if (_current->_done || _current->_remove)
                     current->preLeaving();
                 current->preHiding();
             }
 
-            if (!back && !current->_remove)
+
+            if (!(back || current->_remove))
                 current->sceneShown(next);
 
             _trans = next->runTransition(this, current, back);
@@ -174,7 +183,7 @@ namespace oxygine
             _current = 0;
             _next = 0;
 
-            if ((next->_dialog && _back) || !next->_dialog)
+            if (!next->_dialog || _back)
             {
                 current->_holder->detach();
                 current->postHiding();
@@ -182,12 +191,16 @@ namespace oxygine
 
             next->getHolder()->insertSiblingBefore(_touchBlocker);
 
-            if (!_back || !current->_dialog)
+            if (_back)
+            {
+                if (!current->_dialog)
+                    next->postShowing();
+            }
+            else
+            {
                 next->postShowing();
-
-            if (next && !_back)
                 next->postEntering();
-
+            }
 
 
             getStage()->removeEventListener(TouchEvent::CLICK, CLOSURE(this, &Flow::blockedTouch));
@@ -231,7 +244,7 @@ namespace oxygine
             {
                 if (scenes2show.empty())
                 {
-                    log::messageln("send  blocked touch");
+                   LOGD("send  blocked touch");
                     TouchEvent click(TouchEvent::CLICK, true, _blockedTouchPosition);
                     getStage()->handleEvent(&click);
                 }

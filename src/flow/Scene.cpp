@@ -11,7 +11,7 @@
 #include "SDL.h"
 #endif
 
-#define LOGD(...) log::messageln(__VA_ARGS__)
+#define LOGD(...) log::messageln("flow::" __VA_ARGS__)
 //#define LOGD(...) {}
 namespace oxygine
 {
@@ -143,7 +143,7 @@ namespace oxygine
 
         void Scene::preEntering()
         {
-            LOGD("%-20s '%s'", "Scene.preEntering", getName().c_str());
+            LOGD("%-20s '%s'", "preEntering", getName().c_str());
             _inloop2 = true;
             Event ev2(EVENT_PRE_ENTERING);
             dispatchEvent(&ev2);
@@ -151,7 +151,7 @@ namespace oxygine
 
         void Scene::postEntering()
         {
-            LOGD("%-20s '%s'", "Scene.postEntering", getName().c_str());
+            LOGD("%-20s '%s'", "postEntering", getName().c_str());
             _inloop = true;
             Event ev2(EVENT_POST_ENTERING);
             dispatchEvent(&ev2);
@@ -159,7 +159,7 @@ namespace oxygine
 
         void Scene::preLeaving()
         {
-            LOGD("%-20s '%s'", "Scene.preLeaving", getName().c_str());
+            LOGD("%-20s '%s'", "preLeaving", getName().c_str());
 
             _inloop = false;
             Event ev(EVENT_PRE_LEAVING);
@@ -168,7 +168,7 @@ namespace oxygine
 
         void Scene::postLeaving()
         {
-            LOGD("%-20s '%s'", "Scene.postLeaving", getName().c_str());
+            LOGD("%-20s '%s'", "postLeaving", getName().c_str());
             _inloop2 = false;
             Event ev2(EVENT_POST_LEAVING);
             dispatchEvent(&ev2);
@@ -176,14 +176,14 @@ namespace oxygine
 
         void Scene::sceneShown(spScene s)
         {
-            LOGD("%-20s '%s' - '%s'", "Scene.sceneShown on ", getName().c_str(), s->getName().c_str());
+            LOGD("%-20s '%s' - '%s'", "sceneShown on ", getName().c_str(), s->getName().c_str());
             Event ev(EVENT_SCENE_SHOWN);
             dispatchEvent(&ev);
         }
 
         void Scene::sceneHidden(spScene s)
         {
-            LOGD("%-20s '%s' - '%s'", "Scene.sceneHidden on ", getName().c_str(), s->getName().c_str());
+            LOGD("%-20s '%s' - '%s'", "sceneHidden on ", getName().c_str(), s->getName().c_str());
             Event ev(EVENT_SCENE_HIDDEN);
             dispatchEvent(&ev);
         }
@@ -196,28 +196,28 @@ namespace oxygine
 
             update();
 
-            LOGD("%-20s '%s'", "Scene.preShowing", getName().c_str());
+            LOGD("%-20s '%s'", "preShowing", getName().c_str());
             Event ev(EVENT_PRE_SHOWING);
             dispatchEvent(&ev);
         }
 
         void Scene::postShowing()
         {
-            LOGD("%-20s '%s'", "Scene.postShowing", getName().c_str());
+            LOGD("%-20s '%s'", "postShowing", getName().c_str());
             Event ev(EVENT_POST_SHOWING);
             dispatchEvent(&ev);
         }
 
         void Scene::preHiding()
         {
-            LOGD("%-20s '%s'", "Scene.preHiding", getName().c_str());
+            LOGD("%-20s '%s'", "preHiding", getName().c_str());
             Event ev(EVENT_PRE_HIDING);
             dispatchEvent(&ev);
         }
 
         void Scene::postHiding()
         {
-            LOGD("%-20s '%s'", "Scene.postHiding", getName().c_str());
+            LOGD("%-20s '%s'", "postHiding", getName().c_str());
             _visible = false;
             Event ev(EVENT_POST_HIDING);
             dispatchEvent(&ev);
