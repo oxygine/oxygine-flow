@@ -46,7 +46,7 @@ namespace oxygine
         extern bool _wasTouchBlocked;
         extern spTransition _defaultTransition;
 
-        Scene::Scene(): _done(false), _remove(false), _dialog(false), _inloop(false), _inloopWide(false), _visible(false), _allowDialogsOnTop(true)
+        Scene::Scene(): _done(false), _remove(false), _dialog(false), _instack(false), _instackWide(false), _visible(false), _visibleWide(false), _allowDialogsOnTop(true)
         {
             setName("Scene");
             _holder = new Actor;
@@ -144,7 +144,7 @@ namespace oxygine
         void Scene::preEntering()
         {
             LOGD("%-20s '%s'", "preEntering", getName().c_str());
-            _inloopWide = true;
+            _instackWide = true;
             Event ev2(EVENT_PRE_ENTERING);
             dispatchEvent(&ev2);
         }
@@ -152,7 +152,7 @@ namespace oxygine
         void Scene::postEntering()
         {
             LOGD("%-20s '%s'", "postEntering", getName().c_str());
-            _inloop = true;
+            _instack = true;
             Event ev2(EVENT_POST_ENTERING);
             dispatchEvent(&ev2);
         }
@@ -161,7 +161,7 @@ namespace oxygine
         {
             LOGD("%-20s '%s'", "preLeaving", getName().c_str());
 
-            _inloop = false;
+            _instack = false;
             Event ev(EVENT_PRE_LEAVING);
             dispatchEvent(&ev);
         }
@@ -169,7 +169,7 @@ namespace oxygine
         void Scene::postLeaving()
         {
             LOGD("%-20s '%s'", "postLeaving", getName().c_str());
-            _inloopWide = false;
+            _instackWide = false;
             Event ev2(EVENT_POST_LEAVING);
             dispatchEvent(&ev2);
         }
@@ -192,7 +192,9 @@ namespace oxygine
         {
             _done = false;
             _remove = false;
-            _visible = true;
+            //_visible = false;
+            _visibleWide = true;
+            
 
             update();
 
@@ -204,6 +206,7 @@ namespace oxygine
         void Scene::postShowing()
         {
             LOGD("%-20s '%s'", "postShowing", getName().c_str());
+            _visible = true;
             Event ev(EVENT_POST_SHOWING);
             dispatchEvent(&ev);
         }
@@ -211,6 +214,7 @@ namespace oxygine
         void Scene::preHiding()
         {
             LOGD("%-20s '%s'", "preHiding", getName().c_str());
+            _visible = false;
             Event ev(EVENT_PRE_HIDING);
             dispatchEvent(&ev);
         }
@@ -218,7 +222,7 @@ namespace oxygine
         void Scene::postHiding()
         {
             LOGD("%-20s '%s'", "postHiding", getName().c_str());
-            _visible = false;
+            _visibleWide = false;
             Event ev(EVENT_POST_HIDING);
             dispatchEvent(&ev);
         }
@@ -247,7 +251,7 @@ namespace oxygine
             LOGD("%-20s '%s'", "remove", getName().c_str());
             _resultCB = resultCallback();
             OX_ASSERT(_dialog == false);
-            if (_visible)
+            if (_visibleWide)
             {
                 _remove = true;
             }

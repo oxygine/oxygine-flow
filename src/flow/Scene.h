@@ -113,6 +113,7 @@ namespace oxygine
 
             spActor         getHolder() const { return _holder; }
             bool            isDialog() const { return _dialog; }
+            bool            isInStackWide() const { return _instackWide; }
 
         protected:
 
@@ -132,9 +133,10 @@ namespace oxygine
             virtual spTransition _runTransitionOut(Flow*, spScene current);
 
             spActor _holder;
-            bool _inloop;
-            bool _inloopWide;
-            bool _visible;
+            bool _instack;    //true in [post_entering, pre_leaving]
+            bool _instackWide;//true in [pre_entering, post_leaving]
+            bool _visible;    //true in [post_showing, pre_hiding]
+            bool _visibleWide;//true in [pre_showing, post_hiding]
 
             void _flowPreLeaving();
             void _flowPostLeaving();
