@@ -46,7 +46,7 @@ namespace oxygine
         extern bool _wasTouchBlocked;
         extern spTransition _defaultTransition;
 
-        Scene::Scene(): _done(false), _remove(false), _dialog(false), _inloop(false), _inloop2(false), _visible(false), _allowDialogsOnTop(true)
+        Scene::Scene(): _done(false), _remove(false), _dialog(false), _inloop(false), _inloopWide(false), _visible(false), _allowDialogsOnTop(true)
         {
             setName("Scene");
             _holder = new Actor;
@@ -144,7 +144,7 @@ namespace oxygine
         void Scene::preEntering()
         {
             LOGD("%-20s '%s'", "preEntering", getName().c_str());
-            _inloop2 = true;
+            _inloopWide = true;
             Event ev2(EVENT_PRE_ENTERING);
             dispatchEvent(&ev2);
         }
@@ -169,7 +169,7 @@ namespace oxygine
         void Scene::postLeaving()
         {
             LOGD("%-20s '%s'", "postLeaving", getName().c_str());
-            _inloop2 = false;
+            _inloopWide = false;
             Event ev2(EVENT_POST_LEAVING);
             dispatchEvent(&ev2);
         }
@@ -244,11 +244,21 @@ namespace oxygine
 
         void Scene::remove()
         {
-            _remove = true;
+            LOGD("%-20s '%s'", "remove", getName().c_str());
             _resultCB = resultCallback();
             OX_ASSERT(_dialog == false);
-            if (!_holder->getParent())
+            if (_visible)
             {
+                _remove = true;
+            }
+            else
+            {
+
+                //_flowPreLeaving();
+                //_flowPostLeaving();
+                preLeaving();
+                postLeaving();
+
                 flow::get().removeFromStack(this);
             }
         }

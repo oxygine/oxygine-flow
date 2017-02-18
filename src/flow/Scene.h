@@ -133,7 +133,7 @@ namespace oxygine
 
             spActor _holder;
             bool _inloop;
-            bool _inloop2;
+            bool _inloopWide;
             bool _visible;
 
             void _flowPreLeaving();

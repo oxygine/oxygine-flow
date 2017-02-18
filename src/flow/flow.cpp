@@ -124,7 +124,7 @@ namespace oxygine
 
         void Flow::removeFromStack(spScene scene)
         {
-            OX_ASSERT(scene->_inloop == false);
+            //OX_ASSERT(scene->_inloop == false);
             auto it = std::find(scenes.begin(), scenes.end(), scene);
             if (it != scenes.end())
             {
