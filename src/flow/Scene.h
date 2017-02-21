@@ -112,6 +112,7 @@ namespace oxygine
             void removeTransitions() { _transitionIn = _transitionOut = 0; }
 
             spActor         getHolder() const { return _holder; }
+            const FlowEvent&getFinishEvent() const { return _finishEvent; }
             bool            isDialog() const { return _dialog; }
             bool            isInStackWide() const { return _instackWide; }
 
