@@ -5,9 +5,7 @@
 #include "flow.h"
 #include "STDMaterial.h"
 
-#if OXYGINE_RENDERER>2
 #   include "TweenAlphaFade.h"
-#endif
 
 namespace oxygine
 {
@@ -232,8 +230,6 @@ namespace oxygine
 
             IVideoDriver::instance->setRenderTarget(_mask);
 
-#if OXYGINE_RENDERER>2
-
             Material::setCurrent(0);
 
             STDRenderer& r = *STDMaterial::instance->getRenderer();
@@ -253,22 +249,6 @@ namespace oxygine
                 //r.end();
                 rs.material->finish();
             }
-
-#else
-
-            RenderState rs;
-            rs.renderer = &_r;
-
-            _r.begin(0);
-            {
-                _holder->setPosition(Vector2(0, 0));
-                _holder->setVisible(true);
-                _holder->render(rs);
-                _holder->setPosition(getStage()->global2local(Vector2(0, 0)));
-                _holder->setVisible(false);
-                _r.end();
-            }
-#endif
 
             IVideoDriver::instance->setRenderTarget(0);
 
@@ -319,59 +299,6 @@ namespace oxygine
                         slowestTween = nt;
                 }
             }
-
-            //log::messageln("tq2");
-
-
-#if OXYGINE_RENDERER <= 2
-
-            STDRenderer r;
-            RenderState rs;
-            rs.renderer = &r;
-            rs.renderer->initCoordinateSystem(ds.x, ds.y, true);
-
-            spNativeTexture mask = IVideoDriver::instance->createTexture();
-            mask->init(ds.x, ds.y, TF_R5G5B5A1, true);
-
-            _mask = mask;
-
-
-            spSprite maskSprite = new Sprite;
-            {
-                AnimationFrame fr;
-                Diffuse df;
-                df.base = mask;
-                RectF srcRect(0, 0, (float)ds.x / mask->getWidth(), (float)ds.y / mask->getHeight());
-                RectF destRect(Vector2(0, 0), ds);
-                fr.init(0, df, srcRect, destRect, ds);
-                maskSprite->setAnimFrame(fr);
-            }
-
-            //log::messageln("tq3");
-
-            //#define BUG
-            //STDMaterial
-            spMaskedSprite bg = new MaskedSprite;
-            bg->setMask(maskSprite);
-
-            bg->attachTo(getStage());
-            bg->setPriority(100);
-
-
-            bg->addChild(next->getHolder());
-            bg->setInputEnabled(false);
-            _bg = bg;
-
-            timeMS tm = getTimeMS() + 3000;
-
-            holder->setCallbackDoUpdate(CLOSURE(this, &TransitionQuads::update));
-
-
-
-            //_r = r;
-            _holder = holder;
-            waitTween(slowestTween);
-#endif
         }
 
         void TransitionQuads::_clear()
