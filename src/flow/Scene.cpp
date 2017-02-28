@@ -194,7 +194,7 @@ namespace oxygine
             _remove = false;
             //_visible = false;
             _visibleWide = true;
-            
+
 
             update();
 
