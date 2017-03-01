@@ -152,7 +152,7 @@ namespace oxygine
             bool _done;
 
 
-       public:
+        public:
             void preShowing();
             void postShowing();
             void preHiding();
