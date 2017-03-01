@@ -115,6 +115,7 @@ namespace oxygine
             const FlowEvent& getFinishEvent() const { return _finishEvent; }
             bool            isDialog() const { return _dialog; }
             bool            isInStackWide() const { return _instackWide; }
+            bool            isVisibleWide() const { return _visibleWide; }
 
         protected:
 
@@ -151,6 +152,7 @@ namespace oxygine
             bool _done;
 
 
+       public:
             void preShowing();
             void postShowing();
             void preHiding();

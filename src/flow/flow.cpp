@@ -224,7 +224,7 @@ namespace oxygine
             {
                 current->postLeaving();
                 OX_ASSERT(next->_dialog == false);
-                std::vector<spScene>::iterator i = std::find(scenes.begin(), scenes.end(), current);
+                std::list<spScene>::iterator i = std::find(scenes.begin(), scenes.end(), current);
                 OX_ASSERT(i != scenes.end());
                 scenes.erase(i);
 
@@ -285,7 +285,7 @@ namespace oxygine
             spScene current = scenes.back();
 
 
-            std::vector<spScene>::iterator it = scenes2show.begin();
+            std::list<spScene>::iterator it = scenes2show.begin();
 
             if (!current->_allowDialogsOnTop)
             {
@@ -326,9 +326,9 @@ namespace oxygine
             if (DebugActor::instance)
             {
                 std::string str;
-                for (size_t i = 0; i < scenes.size(); ++i)
+                for (auto it = scenes.begin(); it != scenes.end(); ++it)
                 {
-                    str += scenes[i]->getName();
+                    str += (*it)->getName();
                     str += "-> ";
                 }
                 if (!str.empty())

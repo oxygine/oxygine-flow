@@ -57,8 +57,8 @@ namespace oxygine
             bool hasSceneInStack(spScene) const;
             void removeFromStack(spScene);
 
-            std::vector<spScene> scenes;
-            std::vector<spScene> scenes2show;
+            std::list<spScene> scenes;
+            std::list<spScene> scenes2show;
 
             bool _transition;
             bool _back;
