@@ -232,7 +232,11 @@ namespace oxygine
 
             Material::setCurrent(0);
 
+#if OXYGINE_RENDERER >= 5
+            STDRenderer& r = *STDRenderer::getCurrent();
+#else
             STDRenderer& r = *STDMaterial::instance->getRenderer();
+#endif
             RenderState rs;
             rs.material = STDMaterial::instance;
             r.initCoordinateSystem(ds.x, ds.y, true);
