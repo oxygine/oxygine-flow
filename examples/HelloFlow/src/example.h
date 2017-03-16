@@ -1,7 +1,5 @@
 #pragma once
-#include "Sprite.h"
-#include "res/Resources.h"
-#include "Button.h"
+#include "oxygine-framework.h"
 using namespace oxygine;
 using namespace std;
 

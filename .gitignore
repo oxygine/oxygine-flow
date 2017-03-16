@@ -29,3 +29,4 @@ examples/HelloFlow/proj.android/.gradle/
 
 *.db
 *.dll
+examples/HelloFlow/proj.win32/HelloFlow.VC.VC.opendb

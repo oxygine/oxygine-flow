@@ -1,5 +1,5 @@
 #pragma once
-#include "core/Object.h"
+#include "oxygine/core/Object.h"
 #include <functional>
 #include "Scene.h"
 

@@ -1,11 +1,10 @@
 #include "Transition.h"
-#include "RenderState.h"
-#include "MaskedSprite.h"
-#include "core/oxygine.h"
+#include "oxygine/RenderState.h"
+#include "oxygine/MaskedSprite.h"
+#include "oxygine/core/oxygine.h"
 #include "flow.h"
-#include "STDMaterial.h"
-
-#   include "TweenAlphaFade.h"
+#include "oxygine/STDMaterial.h"
+#include "oxygine/TweenAlphaFade.h"
 
 namespace oxygine
 {

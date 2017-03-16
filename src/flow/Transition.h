@@ -1,9 +1,9 @@
 #pragma once
-#include "core/Object.h"
-#include "Stage.h"
+#include "oxygine/core/Object.h"
+#include "oxygine/Stage.h"
 #include "Scene.h"
-#include "ColorRectSprite.h"
-#include "STDRenderer.h"
+#include "oxygine/ColorRectSprite.h"
+#include "oxygine/STDRenderer.h"
 
 namespace oxygine
 {
