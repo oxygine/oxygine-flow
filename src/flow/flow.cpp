@@ -130,6 +130,12 @@ namespace oxygine
             {
                 scenes.erase(it);
             }
+
+            it = std::find(scenes2show.begin(), scenes2show.end(), scene);
+            if (it != scenes2show.end())
+            {
+                scenes2show.erase(it);
+            }
         }
 
         void Flow::phaseBegin(spScene current, spScene next, bool back)

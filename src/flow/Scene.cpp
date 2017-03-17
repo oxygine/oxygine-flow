@@ -240,7 +240,10 @@ namespace oxygine
                 if (ev)
                     static_cast<Event&>(_finishEvent) = *ev;
                 else
+                {
                     _finishEvent = FlowEvent();
+                    _finishEvent.target = _finishEvent.currentTarget = getStage();
+                }
             }
 
             //Flow::instance.checkDone();
