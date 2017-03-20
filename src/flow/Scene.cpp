@@ -249,6 +249,12 @@ namespace oxygine
             //Flow::instance.checkDone();
         }
 
+        void Scene::finishNoResult()
+        {
+            _done = true;
+            _resultCB = EventCallback();
+        }
+
         void Scene::remove()
         {
             LOGD("%-20s '%s'", "remove", getName().c_str());

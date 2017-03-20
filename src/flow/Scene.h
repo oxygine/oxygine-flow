@@ -81,6 +81,7 @@ namespace oxygine
 
             /*closes current scene**/
             void finish(Event* ev = 0);
+            void finishNoResult();
 
             /**
             Automatically removes Scene from stack (flow).
