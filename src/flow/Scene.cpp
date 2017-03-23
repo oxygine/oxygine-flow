@@ -255,6 +255,11 @@ namespace oxygine
             _resultCB = EventCallback();
         }
 
+        void Scene::noResult()
+        {
+            _resultCB = EventCallback();
+        }
+
         void Scene::remove()
         {
             LOGD("%-20s '%s'", "remove", getName().c_str());
