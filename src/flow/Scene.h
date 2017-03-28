@@ -111,6 +111,7 @@ namespace oxygine
             void setTransitionIn(spTransition t);
             void setTransitionOut(spTransition t);
             void setTransition(spTransition tin, spTransition tout);
+            void setAllowDialogsOnTop(bool allow) { _allowDialogsOnTop = allow; }
             void removeTransitions() { _transitionIn = _transitionOut = 0; }
 
             spActor         getHolder() const { return _holder; }
