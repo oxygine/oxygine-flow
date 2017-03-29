@@ -115,6 +115,7 @@ namespace oxygine
             TouchEvent* event = safeCast<TouchEvent*>(ev);
             _blockedTouchPosition = event->getPointer()->getPosition();
             _wasTouchBlocked = true;
+            _wasBackBlocked = false;
         }
 
         bool Flow::hasSceneInStack(spScene scene) const
@@ -351,6 +352,7 @@ namespace oxygine
             if (quit && !quitLast)
             {
                 _wasBackBlocked = true;
+                _wasTouchBlocked = false;
             }
             quitLast = quit;
 
