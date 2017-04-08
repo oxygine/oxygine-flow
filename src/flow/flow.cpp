@@ -380,6 +380,8 @@ namespace oxygine
                 {
                     _wasBackBlocked = false;
 
+                    LOGD("send  blocked BACK");
+
                     Event ev(Scene::EVENT_BACK);
                     current->dispatchEvent(&ev);
                     checkDone();
