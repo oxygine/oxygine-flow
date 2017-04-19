@@ -251,9 +251,12 @@ namespace oxygine
             {
                 if (scenes2show.empty())
                 {
-                    LOGD("send  blocked touch");
-                    TouchEvent click(TouchEvent::CLICK, true, _blockedTouchPosition);
-                    getStage()->handleEvent(&click);
+                    if (current->_passBlockedTouch)
+                    {
+                        LOGD("send  blocked touch");
+                        TouchEvent click(TouchEvent::CLICK, true, _blockedTouchPosition);
+                        getStage()->handleEvent(&click);
+                    }                    
                 }
                 _wasTouchBlocked = false;
             }

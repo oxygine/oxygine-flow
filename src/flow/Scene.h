@@ -120,6 +120,8 @@ namespace oxygine
             bool            isInStackWide() const { return _instackWide; }
             bool            isVisibleWide() const { return _visibleWide; }
 
+            void setPassBlockedTouch(bool v) { _passBlockedTouch = v; }
+
         protected:
 
             friend class Flow;
@@ -131,6 +133,7 @@ namespace oxygine
             /**dialog mode*/
             bool _dialog;
             bool _allowDialogsOnTop;
+            bool _passBlockedTouch;
 
 
             spTransition runTransition(Flow*, spScene current, bool back);
