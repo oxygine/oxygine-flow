@@ -229,15 +229,15 @@ namespace oxygine
 
             IVideoDriver::instance->setRenderTarget(_mask);
 
-            Material::setCurrent(0);
-
+			RenderState rs;
 #if OXYGINE_RENDERER >= 5
             STDRenderer& r = *STDRenderer::getCurrent();
 #else
+			Material::setCurrent(0);
             STDRenderer& r = *STDMaterial::instance->getRenderer();
+			rs.material = STDMaterial::instance;
 #endif
-            RenderState rs;
-            rs.material = STDMaterial::instance;
+
             r.initCoordinateSystem(ds.x, ds.y, true);
             //TweenAlphaFade
             //r.Renderer::begin(0);
@@ -250,7 +250,9 @@ namespace oxygine
                 _holder->setPosition(getStage()->parent2local(Vector2(0, 0)));
                 //_holder->setVisible(false);
                 //r.end();
+#if OXYGINE_RENDERER < 5
                 rs.material->finish();
+#endif
             }
 
             IVideoDriver::instance->setRenderTarget(0);
