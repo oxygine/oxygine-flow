@@ -229,13 +229,13 @@ namespace oxygine
 
             IVideoDriver::instance->setRenderTarget(_mask);
 
-			RenderState rs;
+            RenderState rs;
 #if OXYGINE_RENDERER >= 5
             STDRenderer& r = *STDRenderer::getCurrent();
 #else
-			Material::setCurrent(0);
+            Material::setCurrent(0);
             STDRenderer& r = *STDMaterial::instance->getRenderer();
-			rs.material = STDMaterial::instance;
+            rs.material = STDMaterial::instance;
 #endif
 
             r.initCoordinateSystem(ds.x, ds.y, true);

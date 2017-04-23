@@ -256,7 +256,7 @@ namespace oxygine
                         LOGD("send  blocked touch");
                         TouchEvent click(TouchEvent::CLICK, true, _blockedTouchPosition);
                         getStage()->handleEvent(&click);
-                    }                    
+                    }
                 }
                 _wasTouchBlocked = false;
             }
