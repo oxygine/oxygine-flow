@@ -81,6 +81,8 @@ namespace oxygine
 
             /*closes current scene**/
             void finish(Event* ev = 0);
+            void finishNoResult();
+            void noResult();
 
             /**
             Automatically removes Scene from stack (flow).
@@ -109,6 +111,7 @@ namespace oxygine
             void setTransitionIn(spTransition t);
             void setTransitionOut(spTransition t);
             void setTransition(spTransition tin, spTransition tout);
+            void setAllowDialogsOnTop(bool allow) { _allowDialogsOnTop = allow; }
             void removeTransitions() { _transitionIn = _transitionOut = 0; }
 
             spActor         getHolder() const { return _holder; }
@@ -116,6 +119,8 @@ namespace oxygine
             bool            isDialog() const { return _dialog; }
             bool            isInStackWide() const { return _instackWide; }
             bool            isVisibleWide() const { return _visibleWide; }
+
+            void setPassBlockedTouch(bool v) { _passBlockedTouch = v; }
 
         protected:
 
@@ -128,6 +133,7 @@ namespace oxygine
             /**dialog mode*/
             bool _dialog;
             bool _allowDialogsOnTop;
+            bool _passBlockedTouch;
 
 
             spTransition runTransition(Flow*, spScene current, bool back);

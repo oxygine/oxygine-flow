@@ -115,6 +115,7 @@ namespace oxygine
             TouchEvent* event = safeCast<TouchEvent*>(ev);
             _blockedTouchPosition = event->getPointer()->getPosition();
             _wasTouchBlocked = true;
+            _wasBackBlocked = false;
         }
 
         bool Flow::hasSceneInStack(spScene scene) const
@@ -129,6 +130,12 @@ namespace oxygine
             if (it != scenes.end())
             {
                 scenes.erase(it);
+            }
+
+            it = std::find(scenes2show.begin(), scenes2show.end(), scene);
+            if (it != scenes2show.end())
+            {
+                scenes2show.erase(it);
             }
         }
 
@@ -244,9 +251,12 @@ namespace oxygine
             {
                 if (scenes2show.empty())
                 {
-                    LOGD("send  blocked touch");
-                    TouchEvent click(TouchEvent::CLICK, true, _blockedTouchPosition);
-                    getStage()->handleEvent(&click);
+                    if (current->_passBlockedTouch)
+                    {
+                        LOGD("send  blocked touch");
+                        TouchEvent click(TouchEvent::CLICK, true, _blockedTouchPosition);
+                        getStage()->handleEvent(&click);
+                    }                    
                 }
                 _wasTouchBlocked = false;
             }
@@ -345,6 +355,7 @@ namespace oxygine
             if (quit && !quitLast)
             {
                 _wasBackBlocked = true;
+                _wasTouchBlocked = false;
             }
             quitLast = quit;
 
@@ -371,6 +382,8 @@ namespace oxygine
                 if (_wasBackBlocked)
                 {
                     _wasBackBlocked = false;
+
+                    LOGD("send  blocked BACK");
 
                     Event ev(Scene::EVENT_BACK);
                     current->dispatchEvent(&ev);

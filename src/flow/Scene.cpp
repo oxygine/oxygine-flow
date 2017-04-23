@@ -46,7 +46,7 @@ namespace oxygine
         extern bool _wasTouchBlocked;
         extern spTransition _defaultTransition;
 
-        Scene::Scene(): _done(false), _remove(false), _dialog(false), _instack(false), _instackWide(false), _visible(false), _visibleWide(false), _allowDialogsOnTop(true)
+        Scene::Scene(): _done(false), _remove(false), _dialog(false), _instack(false), _instackWide(false), _visible(false), _visibleWide(false), _allowDialogsOnTop(true), _passBlockedTouch(true)
         {
             setName("Scene");
             _holder = new Actor;
@@ -240,10 +240,24 @@ namespace oxygine
                 if (ev)
                     static_cast<Event&>(_finishEvent) = *ev;
                 else
+                {
                     _finishEvent = FlowEvent();
+                    _finishEvent.target = _finishEvent.currentTarget = getStage();
+                }
             }
 
             //Flow::instance.checkDone();
+        }
+
+        void Scene::finishNoResult()
+        {
+            _done = true;
+            _resultCB = EventCallback();
+        }
+
+        void Scene::noResult()
+        {
+            _resultCB = EventCallback();
         }
 
         void Scene::remove()
