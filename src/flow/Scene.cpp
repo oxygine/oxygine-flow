@@ -238,7 +238,13 @@ namespace oxygine
             if (_done)
             {
                 if (ev)
+                {
                     static_cast<Event&>(_finishEvent) = *ev;
+                    if (_finishEvent.target.get() == this)
+                        _finishEvent.target = getStage();
+                    if (_finishEvent.currentTarget.get() == this)
+                        _finishEvent.currentTarget = getStage();
+                }
                 else
                 {
                     _finishEvent = FlowEvent();

@@ -306,6 +306,15 @@ namespace oxygine
                     break;
                 }
             }
+            if (current->_checkIsDialogAllowed)
+            {
+                for (; it != scenes2show.end(); ++it)
+                {
+                    if ((*it)->_dialog && !current->_checkIsDialogAllowed(*it))
+                        continue;
+                    break;
+                }
+            }
 
             if (it == scenes2show.end())
                 return;
