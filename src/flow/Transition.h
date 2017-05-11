@@ -1,8 +1,8 @@
 #pragma once
 #include "oxygine/core/Object.h"
-#include "oxygine/Stage.h"
+#include "oxygine/actor/Stage.h"
 #include "Scene.h"
-#include "oxygine/ColorRectSprite.h"
+#include "oxygine/actor/ColorRectSprite.h"
 #include "oxygine/STDRenderer.h"
 
 namespace oxygine

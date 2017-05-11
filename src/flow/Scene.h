@@ -1,7 +1,7 @@
 #pragma once
 #include "oxygine/EventDispatcher.h"
-#include "oxygine/Actor.h"
-#include "oxygine/Stage.h"
+#include "oxygine/actor/Actor.h"
+#include "oxygine/actor/Stage.h"
 #include <functional>
 
 namespace oxygine

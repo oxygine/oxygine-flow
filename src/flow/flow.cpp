@@ -1,7 +1,7 @@
 ﻿#include "flow.h"
 #include "Scene.h"
 #include "Transition.h"
-#include "oxygine/DebugActor.h"
+#include "oxygine/actor/DebugActor.h"
 #include "oxygine/core/oxygine.h"
 
 #define LOGD(...) log::messageln("flow::" __VA_ARGS__)
