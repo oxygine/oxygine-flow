@@ -60,6 +60,7 @@ namespace oxygine
             _transition = false;
             _transitionDone = false;
             _back = false;
+            _locked = false;
         }
 
         Flow::~Flow()
@@ -110,8 +111,12 @@ namespace oxygine
 
         void Flow::blockedTouch(Event* ev)
         {
+            if (_locked)
+                return;
+
             if (_tm + BLOCK_TOUCH_DURATION > getTimeMS())
                 return;
+
             TouchEvent* event = safeCast<TouchEvent*>(ev);
             _blockedTouchPosition = event->getPointer()->getPosition();
             _wasTouchBlocked = true;
@@ -138,6 +143,17 @@ namespace oxygine
                 scenes2show.erase(it);
             }
         }
+
+        void Flow::lockBlockedTouches()
+        {
+            _locked = true;
+        }
+
+        void Flow::unlockBlockedTouches()
+        {
+            _locked = false;
+        }
+
 
         void Flow::phaseBegin(spScene current, spScene next, bool back)
         {
@@ -251,7 +267,7 @@ namespace oxygine
             {
                 if (scenes2show.empty())
                 {
-                    if (current->_passBlockedTouch)
+                    if (current->_passBlockedTouch && !_locked)
                     {
                         LOGD("send  blocked touch");
                         TouchEvent click(TouchEvent::CLICK, true, _blockedTouchPosition);
@@ -391,12 +407,14 @@ namespace oxygine
                 if (_wasBackBlocked)
                 {
                     _wasBackBlocked = false;
+                    if (!_locked)
+                    {
+                        LOGD("send  blocked BACK");
 
-                    LOGD("send  blocked BACK");
-
-                    Event ev(Scene::EVENT_BACK);
-                    current->dispatchEvent(&ev);
-                    checkDone();
+                        Event ev(Scene::EVENT_BACK);
+                        current->dispatchEvent(&ev);
+                        checkDone();
+                    }
                 }
                 else
                 {
