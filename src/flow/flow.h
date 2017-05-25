@@ -2,6 +2,7 @@
 #include "oxygine/core/Object.h"
 #include <functional>
 #include "Scene.h"
+#include "Transition.h"
 
 namespace oxygine
 {
@@ -57,11 +58,15 @@ namespace oxygine
             bool hasSceneInStack(spScene) const;
             void removeFromStack(spScene);
 
+            void lockBlockedTouches();
+            void unlockBlockedTouches();
+
             std::list<spScene> scenes;
             std::list<spScene> scenes2show;
 
             bool _transition;
             bool _back;
+            bool _locked;
 
             spTransition _trans;
             bool _transitionDone;

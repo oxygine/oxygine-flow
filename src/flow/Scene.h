@@ -119,6 +119,7 @@ namespace oxygine
             bool            isDialog() const { return _dialog; }
             bool            isInStackWide() const { return _instackWide; }
             bool            isVisibleWide() const { return _visibleWide; }
+            bool            isFinished() const { return _done; }
 
             void setPassBlockedTouch(bool v) { _passBlockedTouch = v; }
 
