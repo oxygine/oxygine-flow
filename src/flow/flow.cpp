@@ -322,14 +322,13 @@ namespace oxygine
                     break;
                 }
             }
-            if (current->_checkIsDialogAllowed)
+
+            for (; it != scenes2show.end(); ++it)
             {
-                for (; it != scenes2show.end(); ++it)
-                {
-                    if ((*it)->_dialog && !current->_checkIsDialogAllowed(*it))
-                        continue;
-                    break;
-                }
+                spScene dialog = *it;
+                if (dialog->_dialog && (!current->_checkIsThisSceneAllowesDialog(dialog) || !dialog->_checkIsThisDialogAllowedOnScene(current)))
+                    continue;
+                break;
             }
 
             if (it == scenes2show.end())

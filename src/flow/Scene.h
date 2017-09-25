@@ -136,7 +136,8 @@ namespace oxygine
             bool _allowDialogsOnTop;
             bool _passBlockedTouch;
 
-            std::function< bool(spScene) > _checkIsDialogAllowed;
+            std::function< bool(spScene) > _checkIsThisSceneAllowesDialog;//called as: scene->_checkIsDialogAllowed(dialog)
+            std::function< bool(spScene) > _checkIsThisDialogAllowedOnScene;//called  as: dialog->_checkIsDiallogAllowed(scene)
 
 
             spTransition runTransition(Flow*, spScene current, bool back);
