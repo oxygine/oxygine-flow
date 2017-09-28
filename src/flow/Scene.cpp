@@ -1,7 +1,7 @@
 #include "Scene.h"
 #include "Transition.h"
-#include "oxygine/Clock.h"
-
+#include "ox/Clock.hpp"
+#include "ox/MaterialCache.hpp"
 #include "flow.h"
 
 #ifdef __S3E__
@@ -179,6 +179,8 @@ namespace oxygine
             _instackWide = false;
             Event ev2(EVENT_POST_LEAVING);
             dispatchEvent(&ev2);
+
+            mc().removeUnused();
         }
 
         void Scene::sceneShown(spScene s)
