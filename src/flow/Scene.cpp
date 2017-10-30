@@ -54,11 +54,13 @@ namespace oxygine
             _holder->setSize(Stage::instance->getSize());
             _holder->setName("Scene::_holder");
 
-            _checkIsThisSceneAllowesDialog = [](spScene) {
+            _checkIsThisSceneAllowesDialog = [](spScene)
+            {
                 return true;
             };
-            _checkIsThisDialogAllowedOnScene = [](spScene) {
-                return true; 
+            _checkIsThisDialogAllowedOnScene = [](spScene)
+            {
+                return true;
             };
 
             _transitionIn = _defaultTransition;
