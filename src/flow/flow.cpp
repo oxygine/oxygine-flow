@@ -1,4 +1,4 @@
-﻿#include "flow.h"
+#include "flow.h"
 #include "Scene.h"
 #include "Transition.h"
 #include "oxygine/actor/DebugActor.h"
@@ -48,7 +48,8 @@ namespace oxygine
 
         void free()
         {
-            _touchBlocker->detach();
+            if (_touchBlocker)
+                _touchBlocker->detach();
             _touchBlocker = 0;
             _defaultTransition = 0;
             Flow::instance.free();
