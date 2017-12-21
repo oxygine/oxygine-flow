@@ -156,6 +156,16 @@ namespace oxygine
         }
 
 
+        void Flow::finishDialogs()
+        {
+            for (auto it = scenes.rbegin(); it != scenes.rend(); ++it)
+            {
+                spScene scene = *it;
+                if (scene->isDialog())
+                    scene->finishNoResult();
+            }
+        }
+
         void Flow::phaseBegin(spScene current, spScene next, bool back)
         {
             _back = back;

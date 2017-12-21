@@ -61,6 +61,8 @@ namespace oxygine
             void lockBlockedTouches();
             void unlockBlockedTouches();
 
+            void finishDialogs();
+
             std::list<spScene> scenes;
             std::list<spScene> scenes2show;
 
