@@ -3,7 +3,7 @@
 #include "oxygine/actor/MaskedSprite.h"
 #include "oxygine/core/oxygine.h"
 #include "flow.h"
-#include "oxygine/STDMaterial.h"
+//#include "oxygine/STDMaterial.h"
 #include "oxygine/tween/TweenAlphaFade.h"
 
 namespace oxygine
