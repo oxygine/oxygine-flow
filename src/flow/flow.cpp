@@ -4,7 +4,7 @@
 #include "oxygine/actor/DebugActor.h"
 #include "oxygine/core/oxygine.h"
 
-#define LOGD(...) log::messageln("flow::" __VA_ARGS__)
+#define LOGD(...) logs::messageln("flow::" __VA_ARGS__)
 
 namespace oxygine
 {
@@ -99,7 +99,7 @@ namespace oxygine
             auto p = std::find(scenes.begin(), scenes.end(), scene);
             if (p != scenes.end())
             {
-                log::error("you can't show scene '%s', it is already in the list", scene->getName().c_str());
+                logs::error("you can't show scene '%s', it is already in the list", scene->getName().c_str());
                 OX_ASSERT(p == scenes.end());
                 return;
             }

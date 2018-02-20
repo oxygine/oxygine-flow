@@ -69,7 +69,7 @@ public:
             flow::show(new MyDialog, [ = ](Event*)
             {
                 //finish();
-                log::messageln("dialog closed");
+                logs::messageln("dialog closed");
             });
         });
     }
@@ -91,7 +91,7 @@ void example_init()
     //create scene and display it
     flow::show(new MyScene, [](Event * event)
     {
-        log::messageln("scene closed");
+        logs::messageln("scene closed");
     });
 }
 

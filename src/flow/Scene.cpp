@@ -11,7 +11,7 @@
 #include "SDL.h"
 #endif
 
-#define LOGD(...) log::messageln("flow::" __VA_ARGS__)
+#define LOGD(...) logs::messageln("flow::" __VA_ARGS__)
 //#define LOGD(...) {}
 namespace oxygine
 {

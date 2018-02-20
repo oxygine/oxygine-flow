@@ -272,7 +272,7 @@ namespace oxygine
             int numX = ds.x / 40;
             int numY = ds.y / 40;
 
-            //log::messageln("tq1");
+            //logs::messageln("tq1");
             Vector2 quad(holder->getWidth() / numX, holder->getHeight() / numY);
             spTween slowestTween;
 
