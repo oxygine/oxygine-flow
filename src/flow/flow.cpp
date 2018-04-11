@@ -37,7 +37,6 @@ namespace oxygine
             _touchBlocker->setName("Scene::_touchBlocker");
             _touchBlocker->setPosition(-10000, -10000);
             _touchBlocker->setSize(20000, 20000);
-            _touchBlocker->setPriority(10000);
             _touchBlocker->setName("touchBlocker");
 
             _defaultTransition = new TransitionFade;
@@ -200,7 +199,9 @@ namespace oxygine
 
             _trans = next->runTransition(this, current, back);
 
+			_touchBlocker->setPriority(10000);
             getStage()->addChild(_touchBlocker);
+
             _wasTouchBlocked = false;
             _wasBackBlocked = false;
             _tm = getTimeMS();
@@ -223,6 +224,7 @@ namespace oxygine
                 current->postHiding();
             }
 
+			_touchBlocker->setPriority(next->getHolder()->getPriority());
             next->getHolder()->insertSiblingBefore(_touchBlocker);
 
             if (_back)
