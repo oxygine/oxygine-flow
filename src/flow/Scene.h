@@ -6,12 +6,6 @@
 
 namespace oxygine
 {
-    class Action
-    {
-    public:
-        std::string id;
-    };
-
     namespace flow
     {
         class FlowEvent : public Event
