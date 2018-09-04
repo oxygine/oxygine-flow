@@ -199,7 +199,7 @@ namespace oxygine
 
             _trans = next->runTransition(this, current, back);
 
-			_touchBlocker->setPriority(10000);
+            _touchBlocker->setPriority(10000);
             getStage()->addChild(_touchBlocker);
 
             _wasTouchBlocked = false;
@@ -224,7 +224,7 @@ namespace oxygine
                 current->postHiding();
             }
 
-			_touchBlocker->setPriority(next->getHolder()->getPriority());
+            _touchBlocker->setPriority(next->getHolder()->getPriority());
             next->getHolder()->insertSiblingBefore(_touchBlocker);
 
             if (_back)

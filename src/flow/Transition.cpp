@@ -12,7 +12,7 @@ namespace oxygine
     namespace flow
     {
 
-		bool _TRANSITION_ADD_CHILD = false;
+        bool _TRANSITION_ADD_CHILD = false;
 
         void Transition::assign(Scene* scene)
         {
@@ -61,13 +61,13 @@ namespace oxygine
                 if (back)
                     current->_holder->insertSiblingBefore(next->_holder);
                 else
-				{ 
-					if (_TRANSITION_ADD_CHILD)
-						current->_holder->_getStage()->addChild(next->_holder);
-					else
-						current->_holder->insertSiblingAfter(next->_holder);
-				}
-                    
+                {
+                    if (_TRANSITION_ADD_CHILD)
+                        current->_holder->_getStage()->addChild(next->_holder);
+                    else
+                        current->_holder->insertSiblingAfter(next->_holder);
+                }
+
             }
         }
 
