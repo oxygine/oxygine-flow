@@ -117,6 +117,8 @@ namespace oxygine
 
             void setPassBlockedTouch(bool v) { _passBlockedTouch = v; }
 
+            void listenForAllSceneEvents(const EventCallback &cb);
+
         protected:
 
             friend class Flow;

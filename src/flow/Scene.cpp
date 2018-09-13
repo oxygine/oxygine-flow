@@ -91,6 +91,17 @@ namespace oxygine
             setTransitionOut(tout);
         }
 
+        void Scene::listenForAllSceneEvents(const EventCallback &cb)
+        {
+            size_t events[] = { 
+                EVENT_PRE_ENTERING, EVENT_POST_ENTERING, EVENT_PRE_LEAVING, EVENT_POST_LEAVING, 
+                EVENT_PRE_SHOWING, EVENT_POST_SHOWING, EVENT_PRE_HIDING, EVENT_POST_HIDING,
+                EVENT_SCENE_SHOWN, EVENT_SCENE_HIDDEN, EVENT_BACK, EVENT_DESTROY };
+
+            for (size_t i = 0; i < sizeof(events) / sizeof(events[0]); ++i)            
+                addEventListener(events[i], cb);
+        }
+
         void Scene::finishOnClick(spActor actor)
         {
             actor->addClickListener(getFinish());
