@@ -93,7 +93,7 @@ namespace oxygine
             scene->setTransitionOut(t);
         }
 
-        TransitionMove::TransitionMove()
+        TransitionMove::TransitionMove():_moveIn(false)
         {
             _fade = new ColorRectSprite;
             _fade->setPosition(-10000, -10000);
@@ -102,6 +102,11 @@ namespace oxygine
 
             _src = Vector2(0.0f, -getStage()->getHeight());
             _tweenOpt._ease = Tween::ease_inOutBack;
+        }
+
+        void TransitionMove::setMoveWhenIn(bool move)
+        {
+            _moveIn = move;
         }
 
         void TransitionMove::_run(spScene current, spScene next, bool back)
@@ -128,8 +133,19 @@ namespace oxygine
 
 
             holder->setPosition(src);
-            spTween tween = holder->addTween(Actor::TweenPosition(dest), _tweenOpt);
-            waitTween(tween);
+
+            if (_moveIn || back)
+            {
+                spTween tween = holder->addTween(Actor::TweenPosition(dest), _tweenOpt);
+                waitTween(tween);
+            }
+            else
+            {
+                holder->setPosition(dest);
+
+                spTween tween = holder->addTween(TweenDummy(), 1);
+                waitTween(tween);
+            }
         }
 
         void TransitionFade::assign(Scene* scene)

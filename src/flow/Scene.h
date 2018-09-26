@@ -111,6 +111,8 @@ namespace oxygine
             bool            isInStackWide() const { return _instackWide; }
             bool            isVisibleWide() const { return _visibleWide; }
             bool            isFinished() const { return _done; }
+            spTransition    getTransitionIn() const { return _transitionIn; }
+            spTransition    getTransitionOut() const { return _transitionOut; }
 
             void setPassBlockedTouch(bool v) { _passBlockedTouch = v; }
 

@@ -61,10 +61,12 @@ namespace oxygine
             */
             TransitionMove();
             void setSrcPosition(const Vector2& v) { _src = v; }
+            void setMoveWhenIn(bool move);
 
         protected:
             void _run(spScene current, spScene next, bool back) override;
             spColorRectSprite _fade;
+            bool _moveIn;
             Vector2 _src;
         };
 
