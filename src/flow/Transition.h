@@ -11,6 +11,8 @@ namespace oxygine
 
     namespace flow
     {
+        void setDefaultFadeColor(const Color &c);
+
         class Flow;
 
         DECLARE_SMART(Transition, spTransition);

@@ -11,6 +11,12 @@ namespace oxygine
 
     namespace flow
     {
+        Color _fadeColor = Color(0, 0, 0, 128);
+
+        void setDefaultFadeColor(const Color &c)
+        {
+            _fadeColor = c;
+        }
 
         bool _TRANSITION_ADD_CHILD = false;
 
@@ -98,7 +104,7 @@ namespace oxygine
             _fade = new ColorRectSprite;
             _fade->setPosition(-10000, -10000);
             _fade->setSize(Vector2(30000, 30000));
-            _fade->setColor(Color(0, 0, 0, 128));
+            _fade->setColor(_fadeColor);
 
             _src = Vector2(0.0f, -getStage()->getHeight());
             _tweenOpt._ease = Tween::ease_inOutBack;
