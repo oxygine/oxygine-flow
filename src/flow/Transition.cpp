@@ -99,7 +99,7 @@ namespace oxygine
             scene->setTransitionOut(t);
         }
 
-        TransitionMove::TransitionMove():_moveIn(false)
+        TransitionMove::TransitionMove():_moveIn(true)
         {
             _fade = new ColorRectSprite;
             _fade->setPosition(-10000, -10000);
