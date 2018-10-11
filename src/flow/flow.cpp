@@ -43,7 +43,7 @@ namespace oxygine
             _locked = false;
 
             _quitLast = false;
-            _autoQuit = true;
+            _secondary = false;
 
 
             _tm = 0;
@@ -87,10 +87,23 @@ namespace oxygine
                 scenes.push_back(scene);
                 scene->preEntering();
                 scene->preShowing();
-                scene->_holder->attachTo(getStage());
-                scene->postShowing();
-                scene->postEntering();
                 scene->_resultCB = cb;
+
+                if (_secondary)
+                {  
+                    spScene current = new Scene;
+                    current->_holder->attachTo(getStage());
+                    
+                    phaseBegin(current, scene, false);
+                    current->_holder->detach();
+                }
+                else
+                {
+                    scene->_holder->attachTo(getStage());                   
+                    scene->postShowing();
+                    scene->postEntering();
+                }
+                
                 return;
             }
 
@@ -224,7 +237,14 @@ namespace oxygine
             }
 
             _touchBlocker->setPriority(next->getHolder()->getPriority());
-            next->getHolder()->insertSiblingBefore(_touchBlocker);
+
+            
+            if (scenes.empty())
+                _touchBlocker->detach();//nothing to block
+            else
+                next->getHolder()->insertSiblingBefore(_touchBlocker);
+            
+            
 
             if (_back)
             {
@@ -296,10 +316,21 @@ namespace oxygine
             if (current->_done)
             {
                 scenes.pop_back();
+
                 if (scenes.empty())
                 {
-                    current->_resultCB = resultCallback();
-                    current->_finishEvent = FlowEvent();
+                    if (_secondary)
+                    {
+                        spScene prev = new Scene;
+                        prev->_holder->attachTo(getStage());
+                        phaseBegin(current, prev, true);
+                        prev->_holder->detach();
+                    }
+                    else
+                    {
+                        current->_resultCB = resultCallback();
+                        current->_finishEvent = FlowEvent();
+                    }
                 }
                 else
                 {
@@ -437,7 +468,7 @@ namespace oxygine
 
             if (scenes.empty())
             {
-                if (_autoQuit)
+                if (!_secondary)
                     core::requestQuit();
             }
         }

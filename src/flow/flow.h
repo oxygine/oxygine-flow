@@ -76,7 +76,7 @@ namespace oxygine
             spScene _next;
 
 
-            bool _autoQuit;
+            bool _secondary;
 
             spActor _touchBlocker;
 
