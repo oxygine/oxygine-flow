@@ -14,14 +14,6 @@ namespace oxygine
     {
         int BLOCK_TOUCH_DURATION = 300;
 
-        spActor _touchBlocker;
-
-        Vector2 _blockedTouchPosition(0, 0);
-        bool _wasTouchBlocked;
-        bool _wasBackBlocked;
-        timeMS _tm = 0;
-
-
         Flow Flow::instance;
 
 
@@ -30,15 +22,6 @@ namespace oxygine
 
         void init()
         {
-            _tm = 0;
-            _wasTouchBlocked = false;
-            _wasBackBlocked = false;
-            _touchBlocker = new Actor;
-            _touchBlocker->setName("Scene::_touchBlocker");
-            _touchBlocker->setPosition(-10000, -10000);
-            _touchBlocker->setSize(20000, 20000);
-            _touchBlocker->setName("touchBlocker");
-
             _defaultTransition = new TransitionFade;
 
             Flow::instance = Flow();
@@ -47,9 +30,6 @@ namespace oxygine
 
         void free()
         {
-            if (_touchBlocker)
-                _touchBlocker->detach();
-            _touchBlocker = 0;
             _defaultTransition = 0;
             Flow::instance.free();
         }
@@ -61,6 +41,11 @@ namespace oxygine
             _transitionDone = false;
             _back = false;
             _locked = false;
+
+
+            _tm = 0;
+            _wasTouchBlocked = false;
+            _wasBackBlocked = false;
         }
 
         Flow::~Flow()
@@ -70,6 +55,12 @@ namespace oxygine
 
         void Flow::init()
         {
+
+            _touchBlocker = new Actor;
+            _touchBlocker->setName("Scene::_touchBlocker");
+            _touchBlocker->setPosition(-10000, -10000);
+            _touchBlocker->setSize(20000, 20000);
+            _touchBlocker->setName("touchBlocker");
         }
 
         void Flow::free()
@@ -79,6 +70,11 @@ namespace oxygine
             _next = 0;
             scenes.clear();
             scenes2show.clear();
+
+
+            if (_touchBlocker)
+                _touchBlocker->detach();
+            _touchBlocker = 0;
         }
 
         void Flow::show(spScene scene, const resultCallback& cb)
