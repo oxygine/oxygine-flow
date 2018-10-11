@@ -42,6 +42,9 @@ namespace oxygine
             _back = false;
             _locked = false;
 
+            _quitLast = false;
+            _autoQuit = true;
+
 
             _tm = 0;
             _wasTouchBlocked = false;
@@ -383,14 +386,16 @@ namespace oxygine
                 }
             }
 
+            
             bool quit = checkQuit();
-            static bool quitLast = false;
-            if (quit && !quitLast)
+
+            if (quit && !_quitLast)
             {
                 _wasBackBlocked = true;
                 _wasTouchBlocked = false;
             }
-            quitLast = quit;
+            _quitLast = quit;
+        
 
             if (_transition)
             {
@@ -431,7 +436,10 @@ namespace oxygine
             }
 
             if (scenes.empty())
-                core::requestQuit();
+            {
+                if (_autoQuit)
+                    core::requestQuit();
+            }
         }
 
         void update()
