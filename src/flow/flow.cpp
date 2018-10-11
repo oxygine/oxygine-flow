@@ -57,7 +57,7 @@ namespace oxygine
         {
 
             _touchBlocker = new Actor;
-            _touchBlocker->setName("Scene::_touchBlocker");
+            _touchBlocker->setName("Flow::_touchBlocker");
             _touchBlocker->setPosition(-10000, -10000);
             _touchBlocker->setSize(20000, 20000);
             _touchBlocker->setName("touchBlocker");
