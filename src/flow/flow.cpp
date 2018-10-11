@@ -92,7 +92,8 @@ namespace oxygine
                 if (_secondary)
                 {  
                     spScene current = new Scene;
-                    current->_holder->attachTo(getStage());
+                    current->_holder->setPriority(1000);
+                    current->_holder->attachTo(getStage());                    
                     
                     phaseBegin(current, scene, false);
                     current->_holder->detach();
@@ -322,7 +323,8 @@ namespace oxygine
                     if (_secondary)
                     {
                         spScene prev = new Scene;
-                        prev->_holder->attachTo(getStage());
+                        prev->_holder->setPriority(1000);
+                        prev->_holder->attachTo(getStage());                        
                         phaseBegin(current, prev, true);
                         prev->_holder->detach();
                     }
