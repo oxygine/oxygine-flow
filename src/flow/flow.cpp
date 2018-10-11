@@ -84,35 +84,6 @@ namespace oxygine
 
         void Flow::show(spScene scene, const resultCallback& cb)
         {
-            if (scenes.empty())
-            {
-                scenes.push_back(scene);
-                scene->preEntering();
-                scene->preShowing();
-                scene->_resultCB = cb;
-
-                _wasBackBlocked = false;
-                _wasTouchBlocked = false;
-
-                if (_secondary)
-                {  
-                    spScene current = new Scene;
-                    current->_holder->setPriority(1000);
-                    current->_holder->attachTo(getStage());                    
-                    
-                    phaseBegin(current, scene, false);
-                    current->_holder->detach();
-                }
-                else
-                {
-                    scene->_holder->attachTo(getStage());                   
-                    scene->postShowing();
-                    scene->postEntering();
-                }
-                
-                return;
-            }
-
             auto p = std::find(scenes.begin(), scenes.end(), scene);
             if (p != scenes.end())
             {
@@ -318,6 +289,9 @@ namespace oxygine
 
         void Flow::checkDone()
         {
+            if (scenes.empty())
+                return;
+
             spScene current = scenes.back();
             if (current->_done)
             {
@@ -352,11 +326,44 @@ namespace oxygine
             if (scenes2show.empty())
                 return;
 
+            if (_transition)
+                return;
+
+
+            if (scenes.empty())
+            {
+                spScene scene = scenes2show.front();
+                scenes2show.erase(scenes2show.begin());
+
+                scenes.push_back(scene);
+                scene->preEntering();
+                scene->preShowing();
+
+                _wasBackBlocked = false;
+                _wasTouchBlocked = false;
+
+                if (_secondary)
+                {
+                    spScene current = new Scene;
+                    current->_holder->setPriority(1000);
+                    current->_holder->attachTo(getStage());
+
+                    phaseBegin(current, scene, false);
+                    current->_holder->detach();
+                }
+                else
+                {
+                    scene->_holder->attachTo(getStage());
+                    scene->postShowing();
+                    scene->postEntering();
+                }
+
+                return;
+            }
+
             if (scenes.back()->_done)
                 return;
 
-            if (_transition)
-                return;
 
             spScene current = scenes.back();
 
