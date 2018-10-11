@@ -84,7 +84,6 @@ namespace oxygine
             bool _wasTouchBlocked;
             bool _wasBackBlocked;
             timeMS _tm;
-            bool _quitLast;
         };
     }
 }

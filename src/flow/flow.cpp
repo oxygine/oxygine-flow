@@ -3,6 +3,7 @@
 #include "Transition.h"
 #include "oxygine/actor/DebugActor.h"
 #include "oxygine/core/oxygine.h"
+#include "ox/key.hpp"
 
 #define LOGD(...) logs::messageln("flow::" __VA_ARGS__)
 
@@ -24,6 +25,7 @@ namespace oxygine
         {
             _defaultTransition = new TransitionFade;
 
+            key::init();
             Flow::instance = Flow();
             Flow::instance.init();
         }
@@ -32,6 +34,7 @@ namespace oxygine
         {
             _defaultTransition = 0;
             Flow::instance.free();
+            key::release();
         }
 
 
@@ -42,7 +45,6 @@ namespace oxygine
             _back = false;
             _locked = false;
 
-            _quitLast = false;
             _secondary = false;
 
 
@@ -88,6 +90,9 @@ namespace oxygine
                 scene->preEntering();
                 scene->preShowing();
                 scene->_resultCB = cb;
+
+                _wasBackBlocked = false;
+                _wasTouchBlocked = false;
 
                 if (_secondary)
                 {  
@@ -421,14 +426,12 @@ namespace oxygine
 
             
             bool quit = checkQuit();
-
-            if (quit && !_quitLast)
+            if (quit)
             {
                 _wasBackBlocked = true;
                 _wasTouchBlocked = false;
             }
-            _quitLast = quit;
-        
+     
 
             if (_transition)
             {

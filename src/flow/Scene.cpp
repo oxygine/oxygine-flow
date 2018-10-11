@@ -30,13 +30,14 @@ namespace oxygine
 #else
         const Uint8* data = SDL_GetKeyboardState(0);
 
-        if (data[SDL_GetScancodeFromKey(SDLK_BACKSPACE)] ||
-                data[SDL_GetScancodeFromKey(SDLK_ESCAPE)] ||
-                data[SDL_GetScancodeFromKey(SDLK_AC_BACK)])
-        {
-            back = true;
-        }
+        if (key::wasPressed(SDL_SCANCODE_AC_BACK))
+            return true;
 
+        if (key::wasPressed(SDL_SCANCODE_ESCAPE))
+            return true;
+
+        if (key::wasPressed(SDL_SCANCODE_BACKSPACE))
+            return true;
 #endif
         return back;
     }
