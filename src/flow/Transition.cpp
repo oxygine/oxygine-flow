@@ -45,6 +45,7 @@ namespace oxygine
 
         void Transition::waitTween(spTween t)
         {
+            //addRef();
             t->setDoneCallback([ = ](Event*)
             {
                 //_done = true;
@@ -52,6 +53,7 @@ namespace oxygine
                 //_current = 0;
                 //_next = 0;
                 _flow->phaseEnd();
+                //releaseRef();
             });
         }
 
