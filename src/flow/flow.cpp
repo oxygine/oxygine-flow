@@ -215,13 +215,13 @@ namespace oxygine
 
             _touchBlocker->setPriority(next->getHolder()->getPriority());
 
-            
+
             if (scenes.empty())
                 _touchBlocker->detach();//nothing to block
             else
                 next->getHolder()->insertSiblingBefore(_touchBlocker);
-            
-            
+
+
 
             if (_back)
             {
@@ -303,7 +303,7 @@ namespace oxygine
                     {
                         spScene prev = new Scene;
                         prev->_holder->setPriority(1000);
-                        prev->_holder->attachTo(getStage());                        
+                        prev->_holder->attachTo(getStage());
                         phaseBegin(current, prev, true);
                         prev->_holder->detach();
                     }
@@ -431,14 +431,14 @@ namespace oxygine
                 }
             }
 
-            
+
             bool quit = checkQuit();
             if (quit)
             {
                 _wasBackBlocked = true;
                 _wasTouchBlocked = false;
             }
-     
+
 
             if (_transition)
             {

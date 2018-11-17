@@ -13,7 +13,7 @@ namespace oxygine
     {
         Color _fadeColor = Color(0, 0, 0, 128);
 
-        void setDefaultFadeColor(const Color &c)
+        void setDefaultFadeColor(const Color& c)
         {
             _fadeColor = c;
         }
@@ -101,7 +101,7 @@ namespace oxygine
             scene->setTransitionOut(t);
         }
 
-        TransitionMove::TransitionMove():_moveIn(true)
+        TransitionMove::TransitionMove(): _moveIn(true)
         {
             _fade = new ColorRectSprite;
             _fade->setPosition(-10000, -10000);

@@ -11,7 +11,7 @@ namespace oxygine
 
     namespace flow
     {
-        void setDefaultFadeColor(const Color &c);
+        void setDefaultFadeColor(const Color& c);
 
         class Flow;
 
