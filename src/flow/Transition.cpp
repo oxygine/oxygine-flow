@@ -168,7 +168,7 @@ namespace oxygine
             spScene target = back ? current : next;
 
             Color cl = Color(0, 0, 0, target->isDialog() ? 0 : 255);
-            spTween tween = target->getHolder()->addTween(TweenAlphaFade(!back, PostProcessOptions().fullscreen().clear(cl)), _tweenOpt._duration, 1, false, 0);
+            spTween tween = target->getHolder()->addTween(TweenAlphaFade(!back, PostProcessOptions().fullscreen().clear(cl).format(TF_R8G8B8A8)), _tweenOpt._duration, 1, false, 0);
             waitTween(tween);
         }
 
